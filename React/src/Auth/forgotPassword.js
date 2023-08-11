@@ -1,6 +1,7 @@
 
 import React, { useState } from 'react';
 import axios from 'axios';
+import http from '../http';
 
 const ForgotPassword = () => {
     const [email, setEmail] = useState('');
@@ -10,7 +11,7 @@ const ForgotPassword = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('http://127.0.0.1:8000/api/password/email', { email });
+            const response = await http.post('/password/email', { email });
             setSuccessMessage(response.data.success.message);
             setErrorMessage('');
         } catch (error) {

@@ -1,34 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { SaveAltOutlinedIcon,ControlCameraIcon, ContactsOutlinedIcon, Box, InputLabel, MenuItem, FormControl, Select, ToggleOffOutlinedIcon, WifiCalling3OutlinedIcon, AlternateEmailOutlinedIcon, PeopleAltOutlinedIcon, VpnKeyOutlinedIcon, PermIdentityOutlinedIcon, ChangeCircleOutlinedIcon } from '../../component/icon';
+import http from "../../http";
 import Navbar from '../../component/Navbar';
 import Sidebar from '../../component/Sidebar';
-import Box from '@mui/material/Box';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
-import {
-  ToggleOffOutlined as ToggleOffOutlinedIcon,
-  ContactsOutlined as ContactsOutlinedIcon,
-} from '@mui/icons-material';
-import PermIdentityOutlinedIcon from '@mui/icons-material/PermIdentityOutlined';
-import AlternateEmailOutlinedIcon from '@mui/icons-material/AlternateEmailOutlined';
-import WifiCalling3OutlinedIcon from '@mui/icons-material/WifiCalling3Outlined';
-import PeopleAltOutlinedIcon from '@mui/icons-material/PeopleAltOutlined';
-import VpnKeyOutlinedIcon from '@mui/icons-material/VpnKeyOutlined';
-import ChangeCircleOutlinedIcon from '@mui/icons-material/ChangeCircleOutlined';
-import SaveAltOutlinedIcon from '@mui/icons-material/SaveAltOutlined';
-import http from "../../http";
+import { headingStyle } from '../../common/commonStyle';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import ControlCameraIcon from '@mui/icons-material/ControlCamera';
-
-const headingStyle = {
-  color: 'red',
-  fontSize: '24px',
-  background: 'black',
-  padding: '20px',
-};
 
 const UserCreate = () => {
   const navigate = useNavigate();
@@ -227,7 +205,7 @@ const UserCreate = () => {
                                   name='status'
                                   value={formData.status}
                                   label="status"
-                                  onChange={handleStatusChange}
+                                  onChange={handleStatusChange} a
                                 >
                                   <MenuItem value={1}>Active</MenuItem>
                                   <MenuItem value={0}>Inactive</MenuItem>
@@ -289,7 +267,7 @@ const UserCreate = () => {
                               Create
                             </label>
                             <br />
-                            
+
                             <label >
                               <input className='checkbox-container'
                                 type="checkbox"
@@ -302,7 +280,7 @@ const UserCreate = () => {
                             <br />
 
                           </div>
-                          
+
                         </div>
                       </div>
 

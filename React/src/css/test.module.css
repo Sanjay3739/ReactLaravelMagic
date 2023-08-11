@@ -1,0 +1,11 @@
+.container {
+    background-color: lightblue;
+    padding: 20px;
+    border: 1px solid blue;
+  }
+  
+  .text {
+    color: darkblue;
+    font-size: 18px;
+  }
+  

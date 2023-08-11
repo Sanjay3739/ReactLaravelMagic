@@ -1,30 +1,19 @@
 
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable react-hooks/exhaustive-deps */
-
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { styled } from '@mui/material/styles';
+import { ToastContainer, toast } from 'react-toastify';
+import { FontAwesome, PensileIcon, DeleteIcon, EyeIcon, ContactsOutlinedIcon, PersonAddAltTwoToneIcon, ToggleOffOutlinedIcon, MarkEmailReadOutlinedIcon, ThumbUpAltOutlinedIcon, BadgeOutlinedIcon, PhoneCallbackOutlinedIcon, CropOriginalOutlinedIcon } from '../../component/icon';
+import { Table, TableBody, TableCell, tableCellClasses, TableContainer, TableHead, TableRow, Paper, Stack, Button, FormControl, InputLabel, MenuItem, Select, } from '@mui/material';
+import http from '../../http';
 import Navbar from '../../component/Navbar';
 import Sidebar from '../../component/Sidebar';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPencilAlt, faTrash, faEye } from '@fortawesome/free-solid-svg-icons';
-import { styled } from '@mui/material/styles';
-import PersonAddAltTwoToneIcon from '@mui/icons-material/PersonAddAltTwoTone';
-import {
-    CropOriginalOutlined as CropOriginalOutlinedIcon,
-    ToggleOffOutlined as ToggleOffOutlinedIcon,
-    MarkEmailReadOutlined as MarkEmailReadOutlinedIcon,
-    PhoneCallbackOutlined as PhoneCallbackOutlinedIcon,
-    ThumbUpAltOutlined as ThumbUpAltOutlinedIcon,
-    BadgeOutlined as BadgeOutlinedIcon,
-    ContactsOutlined as ContactsOutlinedIcon,
-} from '@mui/icons-material';
-import { Table, TableBody, TableCell, tableCellClasses, TableContainer, TableHead, TableRow, Paper, Stack, Button, FormControl, InputLabel, MenuItem, Select, } from '@mui/material';
-import { useNavigate } from 'react-router-dom';
-import http from '../../http';
-import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-// StyledTableCell and StyledTableRow components
+
+
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
         fontSize: 18,
@@ -92,14 +81,12 @@ const UserIndex = () => {
         };
     }, [searchQuery]);
 
-    // Fetch data effect
+
     useEffect(() => {
         fetchLoggedInUserPermissions(loggedInUserId);
         fetchRole();
         fetchData();
     }, [currentPage, rowsPerPage, sortField, sortOrder, debouncedSearchQuery]);
-
-
 
     const fetchLoggedInUserPermissions = async (userId) => {
         try {
@@ -108,19 +95,14 @@ const UserIndex = () => {
                 throw new Error('Failed to fetch permissions');
             }
             const permissionData = await response.json();
-
-            // Set the loggedInUserPermissions state
             setLoggedInUserPermissions(permissionData);
-
             return permissionData;
         } catch (error) {
             console.error('Error fetching logged-in user permissions:', error);
-            return []; // Return an empty array or handle the error appropriately
+            return [];
         }
     };
 
-
-    // Fetch data function
     const fetchData = async () => {
         try {
             const response = await http.get(
@@ -141,8 +123,6 @@ const UserIndex = () => {
         try {
             const response = await fetch('http://localhost:8000/api/getRole');
             const data = await response.json();
-
-            // Convert the roles array into an object for efficient lookup
             const rolesMap = data.reduce((acc, role) => {
                 acc[role.id] = role;
                 return acc;
@@ -250,8 +230,6 @@ const UserIndex = () => {
                                         <p> All User Listing Bellow to....</p>
                                     </header>
                                 </div>
-
-
                                 {userRole === "1" ? (
                                     <Stack spacing={2} direction='row' className='m-3'>
                                         <Button variant='contained' onClick={Create}>
@@ -259,7 +237,6 @@ const UserIndex = () => {
                                         </Button>
                                     </Stack>
                                 ) : (
-
                                     <>
                                         {loggedInUserPermissions.find((perm) => perm.is_create === 1) ? (
                                             <Stack spacing={2} direction='row' className='m-3'>
@@ -272,11 +249,7 @@ const UserIndex = () => {
                                         )}
                                     </>
                                 )}
-
-
-
                             </div>
-
                             <TableContainer component={Paper}>
                                 <Table sx={{ minWidth: 600 }} aria-label='customized table'>
                                     <TableHead className='tableheader'>
@@ -365,15 +338,15 @@ const UserIndex = () => {
                                                         {userRole === "1" ? (
                                                             <>
                                                                 <a className='delete' onClick={() => handleDelete(user.id)}>
-                                                                    <FontAwesomeIcon icon={faTrash} />
+                                                                    <FontAwesome icon={DeleteIcon} />
                                                                 </a>
 
                                                                 <a className='edit' onClick={() => Edit(user.id)}>
-                                                                    <FontAwesomeIcon icon={faPencilAlt} />
+                                                                    <FontAwesome icon={PensileIcon} />
                                                                 </a>
 
                                                                 <a className='show' onClick={() => Show(user.id)}>
-                                                                    <FontAwesomeIcon icon={faEye} />
+                                                                    <FontAwesome icon={EyeIcon} />
                                                                 </a>
 
                                                             </>
@@ -382,28 +355,22 @@ const UserIndex = () => {
                                                             <>
                                                                 {loggedInUserPermissions.find((perm) => perm.is_delete === 1) && (
                                                                     <a className='delete' onClick={() => handleDelete(user.id)}>
-                                                                        <FontAwesomeIcon icon={faTrash} />
+                                                                        <FontAwesome icon={DeleteIcon} />
                                                                     </a>
                                                                 )}
                                                                 {loggedInUserPermissions.find((perm) => perm.is_edit === 1) && (
                                                                     <a className='edit' onClick={() => Edit(user.id)}>
-                                                                        <FontAwesomeIcon icon={faPencilAlt} />
+                                                                        <FontAwesome icon={PensileIcon} />
                                                                     </a>
                                                                 )}
                                                                 {loggedInUserPermissions.find((perm) => perm.is_view === 1) && (
                                                                     <a className='show' onClick={() => Show(user.id)}>
-                                                                        <FontAwesomeIcon icon={faEye} />
+                                                                        <FontAwesome icon={EyeIcon} />
                                                                     </a>
                                                                 )}
-                                                                
-                                                                
                                                             </>
-
-
                                                         )}
                                                     </StyledTableCell>
-
-
                                                 </StyledTableRow>
                                             ))
                                         ) : (

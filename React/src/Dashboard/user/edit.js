@@ -2,24 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import Navbar from '../../component/Navbar';
 import Sidebar from '../../component/Sidebar';
-import Form from 'react-bootstrap/Form';
-import Box from '@mui/material/Box';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
-import PatternIcon from '@mui/icons-material/Pattern';
-import SaveAltOutlinedIcon from '@mui/icons-material/SaveAltOutlined';
-import PeopleAltOutlinedIcon from '@mui/icons-material/PeopleAltOutlined';
-import AlternateEmailOutlinedIcon from '@mui/icons-material/AlternateEmailOutlined';
-import WifiCalling3OutlinedIcon from '@mui/icons-material/WifiCalling3Outlined';
-import ChangeCircleOutlinedIcon from '@mui/icons-material/ChangeCircleOutlined';
-import ContactsOutlinedIcon from '@mui/icons-material/ContactsOutlined';
+import { Form,Checkbox, InputLabel, Box, MenuItem, Select, FormControl, PatternIcon, SaveAltOutlinedIcon, AlternateEmailOutlinedIcon, PeopleAltOutlinedIcon, WifiCalling3OutlinedIcon, ChangeCircleOutlinedIcon, ContactsOutlinedIcon } from '../../component/icon';
 import http from "../../http";
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Checkbox from '@mui/material/Checkbox';
 
 const headingStyle = {
   color: 'red',
@@ -72,14 +59,14 @@ export default function UserEdit() {
 
   const handleCheckboxChange = (event) => {
     const permissionName = event.target.name;
-  
+
     // Update the local state of checkboxes
     setInputs((prevInputs) => ({
       ...prevInputs,
       [permissionName]: !prevInputs[permissionName],
     }));
   };
-  
+
 
   const handleChange = (event) => {
     const { name, value } = event.target;

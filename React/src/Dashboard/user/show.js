@@ -2,17 +2,10 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import ReplyAllOutlinedIcon from '@mui/icons-material/ReplyAllOutlined';
-import ContactsOutlinedIcon from '@mui/icons-material/ContactsOutlined';
+import { ReplyAllOutlinedIcon, ContactsOutlinedIcon } from '../../component/icon';
 import Navbar from '../../component/Navbar';
 import Sidebar from '../../component/Sidebar';
-
-const headingStyle = {
-  color: 'red',
-  fontSize: '24px',
-  background: 'black',
-  padding: '20px',
-};
+import { headingStyle } from '../../common/commonStyle';
 
 function UserShow() {
   const navigate = useNavigate();
