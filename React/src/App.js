@@ -19,7 +19,6 @@ import OccupationCreate from "./Dashboard/occupation/create";
 import AccountDetails from "./Dashboard/profile/editAccountDetails";
 import ForgotPassword from "./Auth/forgotPassword";
 import ResetPassword from "./Auth/resetPassword";
-import Test from "./component/test";
 
 
 
@@ -52,8 +51,6 @@ function App() {
       <Route path="/occupation/edit/:id" element={<OccupationEdit />} />
 
       <Route path="/user/accountdetails/:id" element={<AccountDetails />} />
-
-      <Route path="/test" element={<Test />} />
 
 
     </Routes>

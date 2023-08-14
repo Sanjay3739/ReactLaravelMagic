@@ -21,9 +21,8 @@ import AddNewPerson from '@mui/icons-material/PersonAddAltTwoTone';
 import Identity from '@mui/icons-material/PermIdentityOutlined';
 import Vpn from '@mui/icons-material/VpnKeyOutlined';
 import ControlsCameraIcon from '@mui/icons-material/ControlCamera';
-
-
-
+import Handshake from "@mui/icons-material/SensorOccupiedOutlined";
+import { BadgeOutlined, ToggleOffOutlined, ThumbUpAltOutlined, PersonAddAltTwoTone, SensorOccupiedOutlined, } from "@mui/icons-material";
 import {
     CropOriginalOutlined as CropOriginalOutlinedIcon,
     ToggleOffOutlined as ToggleOffOutlinedIcon,
@@ -50,21 +49,16 @@ export const FormControl = FormControls;
 export const FontAwesome = FontAwesomeIcon;
 export const PatternIcon = PatternIcons;
 export const ControlCameraIcon = ControlsCameraIcon;
-export const SaveAltOutlinedIcon = BtnSaveIcon;//
+export const SaveAltOutlinedIcon = BtnSaveIcon;
 export const ContactsOutlinedIcon = ContactIcon;
-export const WifiCalling3OutlinedIcon = WifiIcon;//
+export const WifiCalling3OutlinedIcon = WifiIcon;
 export const PersonAddAltTwoToneIcon = AddNewPerson;
-export const AlternateEmailOutlinedIcon = EmailSendIcon;//
-export const PeopleAltOutlinedIcon = PeopleAltOutlinedIcons;//
-export const VpnKeyOutlinedIcon = Vpn;//
-export const PermIdentityOutlinedIcon = Identity;//
+export const AlternateEmailOutlinedIcon = EmailSendIcon;
+export const PeopleAltOutlinedIcon = PeopleAltOutlinedIcons;
+export const VpnKeyOutlinedIcon = Vpn;
+export const HandshakeRoundedIcon = Handshake;
+export const PermIdentityOutlinedIcon = Identity;
 export const ReplyAllOutlinedIcon = Replay;
-export const ChangeCircleOutlinedIcon = ChangeCircleOutlinedIcons;//
-export {
-    CropOriginalOutlinedIcon,
-    ToggleOffOutlinedIcon,
-    MarkEmailReadOutlinedIcon,
-    PhoneCallbackOutlinedIcon,
-    ThumbUpAltOutlinedIcon,
-    BadgeOutlinedIcon,
-};
+export const ChangeCircleOutlinedIcon = ChangeCircleOutlinedIcons;
+export { BadgeOutlined, ToggleOffOutlined, ThumbUpAltOutlined, PersonAddAltTwoTone, SensorOccupiedOutlined, };
+export { CropOriginalOutlinedIcon, ToggleOffOutlinedIcon, MarkEmailReadOutlinedIcon, PhoneCallbackOutlinedIcon, ThumbUpAltOutlinedIcon, BadgeOutlinedIcon, };

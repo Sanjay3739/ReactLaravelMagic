@@ -1,19 +1,14 @@
 import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
-import Navbar from '../../component/Navbar';
-import Sidebar from '../../component/Sidebar';
 import { Form,Checkbox, InputLabel, Box, MenuItem, Select, FormControl, PatternIcon, SaveAltOutlinedIcon, AlternateEmailOutlinedIcon, PeopleAltOutlinedIcon, WifiCalling3OutlinedIcon, ChangeCircleOutlinedIcon, ContactsOutlinedIcon } from '../../component/icon';
 import http from "../../http";
-import axios from 'axios';
+import Navbar from '../../component/Navbar';
+import Sidebar from '../../component/Sidebar';
+import { headingStyle } from '../../common/commonStyle';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const headingStyle = {
-  color: 'red',
-  fontSize: '24px',
-  background: 'black',
-  padding: '20px',
-};
 
 export default function UserEdit() {
   const navigate = useNavigate();

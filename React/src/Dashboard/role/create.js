@@ -1,29 +1,17 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import SensorOccupiedOutlined from "@mui/icons-material/SensorOccupiedOutlined";
+import http from "../../http";
 import Navbar from "../../component/Navbar";
 import Sidebar from "../../component/Sidebar";
-import Box from "@mui/material/Box";
-import InputLabel from "@mui/material/InputLabel";
-import MenuItem from "@mui/material/MenuItem";
-import FormControl from "@mui/material/FormControl";
-import Select from "@mui/material/Select";
-import PermIdentityOutlinedIcon from "@mui/icons-material/PermIdentityOutlined";
-import SaveAltOutlinedIcon from "@mui/icons-material/SaveAltOutlined";
-import http from "../../http";
-import SensorOccupiedOutlinedIcon from "@mui/icons-material/SensorOccupiedOutlined";
-import ToggleOffOutlinedIcon from "@mui/icons-material/ToggleOffOutlined";
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-
-const headingStyle = {
-  color: "red",
-  fontSize: "24px",
-  background: "black",
-  padding: "20px",
-};
+import { headingStyle } from '../../common/commonStyle';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import RoleForm from '../role/RoleFormComponante/role_form';
 
 const RoleCreate = () => {
   const navigate = useNavigate();
+  const [errors, setErrors] = useState({});
   const [formData, setFormData] = useState({
     name: "",
     status: "1",
@@ -34,11 +22,16 @@ const RoleCreate = () => {
     setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
 
-  const [errors, setErrors] = useState({});
+  const handleStatusChange = (event) => {
+    const { name, value } = event.target;
+    setFormData((prevData) => ({ ...prevData, [name]: value }));
+  };
+
+ 
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
+    console.log("handleSubmit called");
     try {
       const form = new FormData();
       form.append("name", formData.name);
@@ -63,83 +56,36 @@ const RoleCreate = () => {
     }
   };
 
-  const handleStatusChange = (event) => {
-    const { name, value } = event.target;
-    setFormData((prevData) => ({ ...prevData, [name]: value }));
-  };
-
+  
   return (
-    <div>
-      <div className="d-flex">
-        <div className="col-lg-2">
-          <Sidebar />
-        </div>
-        <div className="col-lg-10">
-          <Navbar />
-          <div className="col-lg-12">
-            <h1 style={headingStyle}>
-              <SensorOccupiedOutlinedIcon /> Roles
-            </h1>
-            <div className="container w-50">
-              <div className="card">
-                <header className="head-forms">
-                  <h2>Roles Create Page</h2>
-                  <hr />
-                  <p>Below Roles Detail Form Fill!.............</p>
-                </header>
+    <div className="d-flex">
+      <div className="col-lg-2">
+        <Sidebar />
+      </div>
+      <div className="col-lg-10">
+        <Navbar />
+        <div className="col-lg-12">
+          <h1 style={headingStyle}>
+            <SensorOccupiedOutlined /> Roles
+          </h1>
+          <div className="container w-50">
+            <div className="card">
+              <header className="head-forms">
+                <h2>Roles Create Page</h2>
+                <hr />
+                <p>Below Roles Detail Form Fill!.............</p>
+              </header>
 
-                <div className="inputField">
-                  <div className="row">
-                    <form onSubmit={handleSubmit}>
-                      <div className="errored">
-                        {errors.name && (
-                          <div className="error">{errors.name[0]}</div>
-                        )}
-                        {errors.status && (
-                          <div className="error">{errors.status[0]}</div>
-                        )}
-                      </div>
-                      <div className="col-lg-12 head-form">
-                        <PermIdentityOutlinedIcon />
-                        <input
-                          type="text"
-                          name="name"
-                          value={formData.name}
-                          onChange={handleInputChange}
-                          placeholder="Role Name"
-                        />
-                      </div>
+              <div className="inputField">
+                <div className="row">
+                  <RoleForm
+                    formData={formData}
+                    handleInputChange={handleInputChange}
+                    handleStatusChange={handleStatusChange}
+                    handleSubmit={handleSubmit}
+                    errors={errors}
+                  />
 
-                      <div className="col-lg-12 d-flex down  mb-5">
-                        <ToggleOffOutlinedIcon />
-                        <Box sx={{ minWidth: 120, marginLeft: 2 }}>
-                          <FormControl className="userDropdown">
-                            <InputLabel htmlFor="demo-simple-select-label">
-                              Status
-                            </InputLabel>
-                            <Select
-                              labelId="demo-simple-select-label"
-                              id="demo-simple-select"
-                              name="status"
-                              value={formData.status}
-                              label="status"
-                              onChange={handleStatusChange}
-                            >
-                              <MenuItem value={1}>Active</MenuItem>
-                              <MenuItem value={0}>Inactive</MenuItem>
-                            </Select>
-                          </FormControl>
-                        </Box>
-                      </div>
-
-                      <div className="col-lg-6 uploads">
-                        <button className="submitBtn">
-                          Submit
-                          <SaveAltOutlinedIcon className="ms-3" />
-                        </button>
-                      </div>
-                    </form>
-                  </div>
                 </div>
               </div>
             </div>

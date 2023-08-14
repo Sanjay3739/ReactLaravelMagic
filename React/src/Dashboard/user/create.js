@@ -1,16 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { SaveAltOutlinedIcon,ControlCameraIcon, ContactsOutlinedIcon, Box, InputLabel, MenuItem, FormControl, Select, ToggleOffOutlinedIcon, WifiCalling3OutlinedIcon, AlternateEmailOutlinedIcon, PeopleAltOutlinedIcon, VpnKeyOutlinedIcon, PermIdentityOutlinedIcon, ChangeCircleOutlinedIcon } from '../../component/icon';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import http from "../../http";
 import Navbar from '../../component/Navbar';
 import Sidebar from '../../component/Sidebar';
 import { headingStyle } from '../../common/commonStyle';
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import ContactsOutlinedIcon from '@mui/icons-material/ContactsOutlined';
+import UserForm from "../user/UserFormComponante/user_form"; 
 
 const UserCreate = () => {
   const navigate = useNavigate();
   const [role, setRole] = useState([]);
+  const [errors, setErrors] = useState({});
   const [formData, setFormData] = useState({
     first_name: '',
     last_name: '',
@@ -35,7 +37,6 @@ const UserCreate = () => {
     setFormData((prevData) => ({ ...prevData, avatar: event.target.files[0] }));
   };
 
-  const [errors, setErrors] = useState({});
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -109,9 +110,6 @@ const UserCreate = () => {
 
   return (
     <div>
-
-
-
       <div className='d-flex'>
         <div className='col-lg-2'>
           <Sidebar />
@@ -130,167 +128,17 @@ const UserCreate = () => {
                   <p>Below User Detail Form Fill!.............</p>
                 </header>
                 <div className='inputField'>
-                  <div className="row">
-                    <form onSubmit={handleSubmit}>
-                      <div className='errors'>
-                        {Object.entries(errors).map(([key, value]) => (
-                          <div className="error" key={key}>{value[0]}</div>
-                        ))}
-                      </div>
-                      <div className="col-lg-12 head-form">
-                        <PermIdentityOutlinedIcon />
-                        <input
-                          type="text"
-                          name="first_name"
-                          value={formData.first_name}
-                          onChange={handleInputChange}
-                          placeholder="First Name"
-                        />
-                        <PeopleAltOutlinedIcon />
-                        <input
-                          type="text"
-                          name="last_name"
-                          value={formData.last_name}
-                          onChange={handleInputChange}
-                          placeholder="Last Name"
-                        />
-                      </div>
-                      <div className="col-lg-12 head-form">
-                        <AlternateEmailOutlinedIcon />
-                        <input
-                          type="email"
-                          name="email"
-                          value={formData.email}
-                          onChange={handleInputChange}
-                          placeholder="Email"
-                        />
-                        <WifiCalling3OutlinedIcon />
-                        <input
-                          type="text"
-                          name="mobile_no"
-                          value={formData.mobile_no}
-                          onChange={handleInputChange}
-                          placeholder="Mobile Number"
-                        />
-                      </div>
-                      <div className="col-lg-12 head-form">
-                        <VpnKeyOutlinedIcon />
-                        <input
-                          type="password"
-                          name="password"
-                          value={formData.password}
-                          onChange={handleInputChange}
-                          placeholder="Password"
-                        />
-                        <ChangeCircleOutlinedIcon />
-                        <input
-                          type="file"
-                          name="avatar"
-                          onChange={handleFileChange}
-                          placeholder="Avatar"
-                          className="hide_file"
-                        />
-
-                      </div>
-                      <div className="col-lg-12 head-form">
-                        <div className="row" align='start'>
-                          <div className="col-lg-6 d-flex  mb-5">
-                            <ToggleOffOutlinedIcon />
-                            <Box sx={{ marginLeft: 2, minWidth: 120 }}>
-                              <FormControl className='userDropdown'>
-                                <InputLabel htmlFor="demo-simple-select-label">Status</InputLabel>
-                                <Select
-                                  labelId="demo-simple-select-label"
-                                  id="demo-simple-select"
-                                  name='status'
-                                  value={formData.status}
-                                  label="status"
-                                  onChange={handleStatusChange} a
-                                >
-                                  <MenuItem value={1}>Active</MenuItem>
-                                  <MenuItem value={0}>Inactive</MenuItem>
-                                </Select>
-                              </FormControl>
-                            </Box>
-                          </div>
-
-                          <div className="col-lg-6 d-flex mb-5">
-                            <ControlCameraIcon />
-                            <FormControl sx={{ marginLeft: 2, minWidth: 200, maxHeight: '50px', backgroundColor: 'white' }}>
-                              <InputLabel id="role-label">Role</InputLabel>
-                              <Select as={Select} name="role_id" labelId="role-label" label="Role" value={formData.role_id} onChange={handleInputChange}>
-                                <MenuItem value=""><em>None</em></MenuItem>
-                                {role.map((role) => (
-                                  <MenuItem key={role.id} value={role.id}>
-                                    {role.name}
-                                  </MenuItem>
-                                ))}
-                              </Select>
-                            </FormControl>
-                          </div>
-
-                          <div className='col-lg-6 '>
-                            <label>
-                              <input className='checkbox-container'
-                                type="checkbox"
-                                name="is_edit"
-                                checked={formData.is_edit}
-                                onChange={handleCheckboxChange}
-                              />
-                              Edit
-                            </label>
-                            <br />
-
-                            <label>
-                              <input className='checkbox-container'
-                                type="checkbox"
-                                name="is_delete"
-                                checked={formData.is_delete}
-                                onChange={handleCheckboxChange}
-                              />
-                              Delete
-                            </label>
-                            <br />
-
-                          </div>
-                          <div className='col-lg-6'>
-                            <label>
-                              <input className='checkbox-container'
-                                type="checkbox"
-                                name="is_create"
-                                checked={formData.is_create}
-                                onChange={handleCheckboxChange}
-                                style={{
-                                  color: formData.is_create ? 'green' : 'red',
-                                }}
-                              />
-                              Create
-                            </label>
-                            <br />
-
-                            <label >
-                              <input className='checkbox-container'
-                                type="checkbox"
-                                name="is_view"
-                                checked={formData.is_view}
-                                onChange={handleCheckboxChange}
-                              />
-                              View
-                            </label>
-                            <br />
-
-                          </div>
-
-                        </div>
-                      </div>
-
-                      <div className="col-lg-6 uploads">
-                        <button className='submitBtn'>
-                          Submit<SaveAltOutlinedIcon className='ms-3' />
-                        </button>
-
-                      </div>
-                    </form>
+                  <div className='row'>
+                    <UserForm
+                      formData={formData}
+                      handleInputChange={handleInputChange}
+                      handleStatusChange={handleStatusChange}
+                      handleFileChange={handleFileChange}
+                      handleCheckboxChange={handleCheckboxChange}
+                      handleSubmit={handleSubmit}
+                      errors={errors}
+                      roleOptions={role}
+                    />
                   </div>
                 </div>
               </div>
@@ -303,3 +151,4 @@ const UserCreate = () => {
 };
 
 export default UserCreate;
+
