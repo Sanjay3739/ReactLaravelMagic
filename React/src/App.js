@@ -19,11 +19,6 @@ import OccupationCreate from "./Dashboard/occupation/create";
 import AccountDetails from "./Dashboard/profile/editAccountDetails";
 import ForgotPassword from "./Auth/forgotPassword";
 import ResetPassword from "./Auth/resetPassword";
-import Test from "./component/test";
-
-
-
-
 
 function App() {
   return (
@@ -32,30 +27,21 @@ function App() {
       <Route path="/login" element={<Login />} />
       <Route path="/forgotPassword" element={<ForgotPassword />} />
       <Route path="/passwordReset" element={<ResetPassword/>} />
-
-
       <Route path="/dashboard" element={<Dashboard />} />
       <Route path="/sidebar" element={<Sidebar />} />
       <Route path="/navbar" element={<Navbar />} />
-
+       {/* user router */}
       <Route path="/user/index" element={<UserIndex />} />
       <Route path="/user/create" element={<UserCreate />} />
       <Route path="/user/show/:id" element={<UserShow />} />
       <Route path="/user/edit/:id" element={<UserEdit />} />
-
       <Route path="/role/create" element={<RoleCreate />} />
       <Route path="/role/index" element={<RoleIndex />} />
       <Route path="/role/edit/:id" element={<RoleEdit />} />
-
       <Route path="/occupation/create" element={<OccupationCreate />} />
       <Route path="/occupation/index" element={<OccupationIndex />} />
       <Route path="/occupation/edit/:id" element={<OccupationEdit />} />
-
       <Route path="/user/accountdetails/:id" element={<AccountDetails />} />
-
-      <Route path="/test" element={<Test />} />
-
-
     </Routes>
   );
 }

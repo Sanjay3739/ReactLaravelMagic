@@ -1,43 +1,15 @@
-import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { Stack, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Button, FormControl, InputLabel, MenuItem, Select, Box, } from "@mui/material";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPencilAlt, faTrash } from "@fortawesome/free-solid-svg-icons";
-import { ToggleOffOutlined as ToggleOffOutlinedIcon, ThumbUpAltOutlined as ThumbUpAltOutlinedIcon, BadgeOutlined as BadgeOutlinedIcon, } from "@mui/icons-material";
-import { styled } from "@mui/material/styles";
-import { tableCellClasses } from "@mui/material/TableCell";
-import HandshakeRoundedIcon from "@mui/icons-material/SensorOccupiedOutlined";
-import PersonAddAltTwoToneIcon from "@mui/icons-material/PersonAddAltTwoTone";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { FontAwesome, Box, PensileIcon, DeleteIcon, HandshakeRoundedIcon, PersonAddAltTwoToneIcon, ToggleOffOutlinedIcon, ThumbUpAltOutlinedIcon, BadgeOutlinedIcon } from '../../component/icon';
+import { Table, TableBody, TableContainer, TableHead, TableRow, Paper, Stack, Button, FormControl, InputLabel, MenuItem, Select, } from '@mui/material';
 import http from "../../http";
-import Navbar from "../../component/Navbar";
-import Sidebar from "../../component/Sidebar";
+import Navbar from '../../component/Navbar';
+import Sidebar from '../../component/Sidebar';
+import { headingStyle, StyledTableCell, StyledTableRow } from '../../common/commonStyle';
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
-const StyledTableCell = styled(TableCell)(({ theme }) => ({
-  [`&.${tableCellClasses.head}`]: {
-    fontSize: 18,
-  },
-  [`&.${tableCellClasses.body}`]: {
-    fontSize: 15,
-  },
-}));
 
-const StyledTableRow = styled(TableRow)(({ theme }) => ({
-  "&:nth-of-type(odd)": {
-    backgroundColor: theme.palette.action.hover,
-  },
-  "&:last-child td, &:last-child th": {
-    border: 0,
-  },
-}));
-
-const headingStyle = {
-  color: "red",
-  fontSize: "24px",
-  background: "black",
-  padding: "20px",
-};
 function OccupationIndex() {
   const navigate = useNavigate();
   const [data, setData] = useState([]);
@@ -186,7 +158,7 @@ function OccupationIndex() {
                             </StyledTableCell>
                             <StyledTableCell align="left" className="d-flex">
                               <a className="edit" onClick={() => Edit(user.id)}>
-                                <FontAwesomeIcon icon={faPencilAlt} />
+                                <FontAwesome icon={PensileIcon} />
                               </a>
                               <a
                                 className="delete"
@@ -198,7 +170,7 @@ function OccupationIndex() {
                                   )
                                 }
                               >
-                                <FontAwesomeIcon icon={faTrash} />
+                                <FontAwesome icon={DeleteIcon} />
                               </a>
                             </StyledTableCell>
                           </StyledTableRow>

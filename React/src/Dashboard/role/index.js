@@ -1,63 +1,16 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import http from "../../http";
-import Navbar from "../../component/Navbar";
-import Sidebar from "../../component/Sidebar";
-import {
-  BadgeOutlined,
-  ToggleOffOutlined,
-  ThumbUpAltOutlined,
-  PersonAddAltTwoTone,
-  SensorOccupiedOutlined,
-} from "@mui/icons-material";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
-  Paper,
-  FormControl,
-  Select,
-  InputLabel,
-  MenuItem,
-  Box,
-  Stack,
-  Button,
-  tableCellClasses,
-} from "@mui/material";
-import { styled } from "@mui/material/styles";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPencilAlt, faTrash } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesome, PensileIcon, DeleteIcon, BadgeOutlined, ToggleOffOutlined, ThumbUpAltOutlined, PersonAddAltTwoTone, SensorOccupiedOutlined, } from '../../component/icon';
+import { Box, Table, TableBody, TableContainer, TableHead, TableRow, Paper, Stack, Button, FormControl, InputLabel, MenuItem, Select, } from '@mui/material';
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import http from '../../http';
+import Navbar from '../../component/Navbar';
+import Sidebar from '../../component/Sidebar';
+import { headingStyle, StyledTableCell, StyledTableRow } from '../../common/commonStyle';
 
-const StyledTableCell = styled(TableCell)(({ theme }) => ({
-  [`&.${tableCellClasses.head}`]: {
-    fontSize: 18,
-  },
-  [`&.${tableCellClasses.body}`]: {
-    fontSize: 15,
-  },
-}));
 
-const StyledTableRow = styled(TableRow)(({ theme }) => ({
-  "&:nth-of-type(odd)": {
-    backgroundColor: theme.palette.action.hover,
-  },
-  "&:last-child td, &:last-child th": {
-    border: 0,
-  },
-}));
-
-const headingStyle = {
-  color: "red",
-  fontSize: "24px",
-  background: "black",
-  padding: "20px",
-};
 
 function UserIndex() {
   const navigate = useNavigate();
@@ -219,13 +172,13 @@ function UserIndex() {
 
                             <StyledTableCell align="left" className="d-flex">
                               <a className="edit" onClick={() => Edit(user.id)}>
-                                <FontAwesomeIcon icon={faPencilAlt} />
+                                <FontAwesome icon={PensileIcon} />
                               </a>
                               <a
                                 className="delete"
                                 onClick={() => handleDelete(user.id)}
                               >
-                                <FontAwesomeIcon icon={faTrash} />
+                                <FontAwesome icon={DeleteIcon} />
                               </a>
                             </StyledTableCell>
                           </StyledTableRow>

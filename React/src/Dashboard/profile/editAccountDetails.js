@@ -2,14 +2,16 @@ import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import http from "../../http";
 import axios from "axios";
-import Form from "react-bootstrap/Form";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import ProfileForm from '../profile/ProfileFormComponante/profile_form';
+
 
 export default function AccountDetails() {
   const navigate = useNavigate();
   const [countries, setCountries] = useState([]);
   const [occupations, setOccupations] = useState([]);
+  const [errors, setErrors] = useState({});
   const { id } = useParams();
   const [inputs, setInputs] = useState({
     first_name: "",
@@ -135,13 +137,12 @@ export default function AccountDetails() {
 
   return (
     <div className="container-xl px-4 mt-4">
-      <hr className="mt-0 mb-4" />
+    
       <div className="row">
         <div className="col-xl-4">
           <div className="card mb-4 mb-xl-0">
             <div className="card-header">Profile Picture</div>
             <div className="card-body text-center">
-
               {inputs.avatar ? (
                 <img
                   className="img-account-profile"
@@ -155,8 +156,6 @@ export default function AccountDetails() {
                   alt="No Avatar"
                 />
               )}
-
-
               <div className="small font-italic text-muted mb-4">
                 JPG or PNG no larger than 5 MB
               </div>
@@ -176,229 +175,14 @@ export default function AccountDetails() {
           <div className="card mb-4">
             <div className="card-header">Account Details</div>
             <div className="card-body">
-              <Form onSubmit={handleSubmit}>
-                <div className="row gx-3 mb-3">
-                  <div className="col-md-6">
-                    <label className="label mb-1" htmlFor="inputFirstName">
-                      First name
-                    </label>
-                    <input
-                      className="form-control"
-                      id="inputFirstName"
-                      type="text"
-                      name="first_name"
-                      value={inputs.first_name}
-                      onChange={handleChange}
-                      placeholder="Enter your first name"
-                    />
-                  </div>
-                  <div className="col-md-6">
-                    <label className="label mb-1" htmlFor="inputLastName">
-                      Last name
-                    </label>
-                    <input
-                      className="form-control"
-                      id="inputLastName"
-                      type="text"
-                      name="last_name"
-                      value={inputs.last_name}
-                      onChange={handleChange}
-                      placeholder="Enter your last name"
-                    />
-                  </div>
-                </div>
-                <div className="row gx-3 mb-3">
-                  <div className="col-md-6">
-                    <label className="label mb-1" htmlFor="inputPhone">
-                      Phone number
-                    </label>
-                    <input
-                      className="form-control"
-                      id="inputPhone"
-                      pattern="[0-9]*"
-                      type="tel"
-                      maxLength="10"
-                      name="mobile_no"
-                      value={inputs.mobile_no}
-                      onChange={handleChange}
-                      placeholder="Enter your phone number"
-                    />
-                  </div>
-                  <div className="col-md-6">
-                    <label className="label mb-1" htmlFor="inputPassword">
-                      Password
-                    </label>
-                    <input
-                      className="form-control"
-                      id="inputPassword"
-                      name="password"
-                      value={inputs.password}
-                      onChange={handleChange}
-                      type="password"
-                      placeholder="Enter your password"
-                    />
-                  </div>
-                </div>
-                <div className="mb-3">
-                  <label className="label mb-1" htmlFor="inputEmailAddress">
-                    Email address
-                  </label>
-                  <input
-                    className="form-control"
-                    id="inputEmailAddress"
-                    type="email"
-                    name="email"
-                    value={inputs.email}
-                    onChange={handleChange}
-                    placeholder="Enter your email address"
-                  />
-                </div>
-                <div className="row gx-3 mb-3">
-                  <div className="col-md-6">
-                    <label className="label mb-1" htmlFor="inputBirthday">
-                      Birthday
-                    </label>
-                    <input
-                      className="form-control"
-                      id="inputBirthday"
-                      name="birthday"
-                      value={inputs.birthday}
-                      onChange={handleChange}
-                      type="date"
-                    />
-                  </div>
-                  <div className="col-md-6">
-                    <label
-                      className="label mb-1"
-                      htmlFor="demo-select-gender-label"
-                    >
-                      Gender
-                    </label>
-                    <select
-                      className="form-control"
-                      id="demo-select-gender-label"
-                      name="gender"
-                      value={inputs.gender}
-                      onChange={handleChange}
-                    >
-                      <option value="">Select Your Gender</option>
-                      <option>Male</option>
-                      <option>Female</option>
-                      <option>Other</option>
-                      <option>Not Specified</option>
-                    </select>
-                  </div>
-                </div>
-                <div className="row gx-3 mb-3">
-                  <div className="col-md-6">
-                    <label
-                      className="label mb-1"
-                      htmlFor="demo-select-occupation-label"
-                    >
-                      Occupation
-                    </label>
-                    <select
-                      className="form-control"
-                      id="demo-select-occupation-label"
-                      name="occupation"
-                      value={inputs.occupation}
-                      onChange={handleChange}
-                    >
-                      <option value="">Select an occupation</option>
-                      {occupations.data &&
-                        Array.isArray(occupations.data) &&
-                        occupations.data.map((occupation) => (
-                          <option key={occupation.id} value={occupation.name}>
-                            {occupation.name}
-                          </option>
-                        ))}
-                    </select>
-                  </div>
-                  <div className="col-md-6">
-                    <label
-                      className="label mb-1"
-                      htmlFor="demo-select-status-label"
-                    >
-                      Status
-                    </label>
-                    <select
-                      className="form-control"
-                      id="demo-select-status-label"
-                      name="status"
-                      value={inputs.status}
-                      onChange={handleChange}
-                    >
-                      <option value={1}>Active</option>
-                      <option value={0}>Inactive</option>
-                    </select>
-                  </div>
-                </div>
-                <div className="row gx-3 mb-3">
-                  <div className="col-md-6">
-                    <label className="label mb-1" htmlFor="inputLocation">
-                      Location
-                    </label>
-                    <select
-                      className="form-control"
-                      id="inputLocation"
-                      name="location"
-                      value={inputs.location}
-                      onChange={handleChange}
-                      placeholder="Enter your location"
-                    >
-                      <option value="">Select a country</option>
-                      {countries.map((country) => (
-                        <option key={country.id} value={country.name}>
-                          {country.name}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-                </div>
-                <div className="row gx-3 mb-3">
-                  <div className="col-md-12">
-                    <label className="label mb-1" htmlFor="inputAddress">
-                      Address
-                    </label>
-                    <textarea
-                      className="form-control"
-                      id="inputAddress"
-                      name="address"
-                      value={inputs.address}
-                      onChange={handleChange}
-                      placeholder="Enter your address"
-                    />
-                  </div>
-                </div>
-                <div className="col-md-6">
-                  <label className="label mb-1" htmlFor="inputLike">
-                    What You like?
-                  </label>
-                  <select
-                    className="form-control dp"
-                    id="inputLike"
-                    name="what_you_like"
-                    multiple
-                    value={inputs.what_you_like}
-                    onChange={handleChange}
-                  >
-                    <option disabled className="item-center">Select Your Hobbies </option>
-                    <option className="dropdown_option_white">Coding</option>
-                    <option className="dropdown_option_black">Reading</option>
-                    <option className="dropdown_option_white">Writing</option>
-                    <option className="dropdown_option_black">Cricket</option>
-                    <option className="dropdown_option_white">Dance</option>
-                    <option className="dropdown_option_black">Camping</option>
-                    <option className="dropdown_option_white">Origami</option>
-                    <option className="dropdown_option_black">Running</option>
-                    <option className="dropdown_option_white">Cooking</option>
-                    <option className="dropdown_option_black">Shopping</option>
-                  </select>
-                </div>
-                <button className="btn btn-primary" type="submit">
-                  Save changes
-                </button>
-              </Form>
+              <ProfileForm
+                inputs={inputs}
+                handleChange={handleChange}
+                handleSubmit={handleSubmit}
+                errors={errors}
+                occupations={occupations}
+                countries={countries}
+              />
             </div>
           </div>
         </div>

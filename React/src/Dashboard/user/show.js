@@ -66,7 +66,7 @@ function UserShow() {
                     <div className='row'>
                       <div className="card-body text-start col-lg-6">
 
-                        <div className='heading'>  <span className="role">Full Name:</span> &nbsp;  <span className='role_value' >{user.first_name}</span>  </div>
+                        <div className='heading'>  <span className="role">Full Name:</span> &nbsp;  <span className='role_value' >{user.first_name} {user.last_name}</span>  </div>
 
                         <div className='heading'>  <span className="role">Mobile Number:</span>  &nbsp; <span className='role_value' >{user.mobile_no}</span>  </div>
 

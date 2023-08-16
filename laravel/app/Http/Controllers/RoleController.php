@@ -13,7 +13,7 @@ class RoleController extends Controller
         $query = $request->input('query');
         $rowsPerPage = $request->input('rowsPerPage');
 
-        $roles = Role::select('id', 'name','status')
+        $roles = Role::select('id', 'name', 'status')
             ->where('name', 'LIKE', "%{$query}%")
             ->orderBy('id', 'desc');
         $roles = $roles->paginate($rowsPerPage);
@@ -70,8 +70,8 @@ class RoleController extends Controller
         $validator = \Illuminate\Support\Facades\Validator::make($request->all(), [
             'name' => 'required|string|max:255',
             'status' => 'required|boolean',
-
         ]);
+
 
         if ($validator->fails()) {
             return response()->json(['errors' => $validator->errors()], 400);
@@ -83,8 +83,7 @@ class RoleController extends Controller
         ]);
 
         $roles->update($data);
+
         return response()->json(['message' => 'Role profile updated successfully']);
     }
-
-
 }

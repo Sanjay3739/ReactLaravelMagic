@@ -46,6 +46,7 @@ body {
     padding: 7px;
     border-radius: 7px;
 }
+/* Global CSS or Styling Module */
 
 .edit,
 .delete,
@@ -133,6 +134,9 @@ body {
     background-color: #fff
 }
 
+.drops{
+    background-color: #ffff;
+}
 .sets {
     font-family: 'Abel', sans-serif;
     display: flex;
@@ -619,6 +623,7 @@ input[class="form-inputs"] {
 
 .menu-wrap {
     grid-area: menu;
+    height: 1060px;
     padding-bottom: 3em;
     overflow: auto;
     background: #fff;
@@ -843,6 +848,7 @@ input[class="form-inputs"] {
 }
 
 .box {
+    margin-top: 449px ;
     max-width: 900px;
     width: 90%;
     display: flex;

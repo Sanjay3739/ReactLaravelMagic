@@ -1,24 +1,17 @@
 import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
+import { Form, Checkbox, InputLabel, Box, MenuItem, Select, FormControl, PatternIcon, SaveAltOutlinedIcon, AlternateEmailOutlinedIcon, PeopleAltOutlinedIcon, WifiCalling3OutlinedIcon, ChangeCircleOutlinedIcon, ContactsOutlinedIcon } from '../../component/icon';
+import http from "../../http";
 import Navbar from '../../component/Navbar';
 import Sidebar from '../../component/Sidebar';
-import { Form,Checkbox, InputLabel, Box, MenuItem, Select, FormControl, PatternIcon, SaveAltOutlinedIcon, AlternateEmailOutlinedIcon, PeopleAltOutlinedIcon, WifiCalling3OutlinedIcon, ChangeCircleOutlinedIcon, ContactsOutlinedIcon } from '../../component/icon';
-import http from "../../http";
-import axios from 'axios';
+import { headingStyle } from '../../common/commonStyle';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
-const headingStyle = {
-  color: 'red',
-  fontSize: '24px',
-  background: 'black',
-  padding: '20px',
-};
 
 export default function UserEdit() {
   const navigate = useNavigate();
   const { id } = useParams();
-
   const [inputs, setInputs] = useState({
     first_name: '',
     last_name: '',
@@ -33,15 +26,13 @@ export default function UserEdit() {
     is_edit: '0',
   });
 
-
   useEffect(() => {
     fetchUser();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const fetchUser = async () => {
     try {
-      const response = await http.get(`http://localhost:8000/api/users/${id}`);
+      const response = await http.get(`/users/${id}`);
       const userData = response.data;
       setInputs({
         ...userData,
@@ -55,18 +46,14 @@ export default function UserEdit() {
     }
   };
 
-
-
   const handleCheckboxChange = (event) => {
     const permissionName = event.target.name;
-
     // Update the local state of checkboxes
     setInputs((prevInputs) => ({
       ...prevInputs,
       [permissionName]: !prevInputs[permissionName],
     }));
   };
-
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -111,97 +98,36 @@ export default function UserEdit() {
     }
   };
 
-
-
   return (
     <div>
       <div className='d-flex'>
-        <div className='col-lg-2'>
-          <Sidebar />
-        </div>
-        <div className='col-lg-10'>
-          <Navbar />
-          <div className='col-lg-12'>
-            <h1 style={headingStyle}>
-              <ContactsOutlinedIcon /> User
-            </h1>
+        <div className='col-lg-2'><Sidebar /></div>
+        <div className='col-lg-10'><Navbar />
+          <div className='col-lg-12'><h1 style={headingStyle}><ContactsOutlinedIcon />User</h1>
             <div className='container-fluid'>
               <div className='card'>
-                <header className="head-forms">
-                  <h2>User Edit Page</h2>
-                  <hr />
-                  <p>Below User Detail Form Edit!.............</p>
-                </header>
+                <header className="head-forms"><h2>User Edit Page</h2><hr /><p>Below User Detail Form Edit!.............</p></header>
                 <div className='inputField'>
                   <Form onSubmit={handleSubmit}>
                     <div className="row">
                       <div className="col-lg-12 head-form">
-                        <PeopleAltOutlinedIcon />
-                        <input
-                          type="text"
-                          name="first_name"
-                          value={inputs.first_name}
-                          onChange={handleChange}
-                          placeholder="First Name"
-                        />
-                        <PeopleAltOutlinedIcon />
-                        <input
-                          type="text"
-                          name="last_name"
-                          value={inputs.last_name}
-                          onChange={handleChange}
-                          placeholder="Last Name"
-                        />
+                        <PeopleAltOutlinedIcon /><input type="text" name="first_name" value={inputs.first_name} onChange={handleChange} placeholder="First Name" />
+                        <PeopleAltOutlinedIcon /><input type="text" name="last_name" value={inputs.last_name} onChange={handleChange} placeholder="Last Name" />
                       </div>
                       <div className="col-lg-12 head-form">
-                        <AlternateEmailOutlinedIcon />
-                        <input
-                          type="email"
-                          name="email"
-                          value={inputs.email}
-                          onChange={handleChange}
-                          placeholder="Email"
-                        />
-                        <WifiCalling3OutlinedIcon />
-                        <input
-                          type="text"
-                          name="mobile_no"
-                          value={inputs.mobile_no}
-                          onChange={handleChange}
-                          placeholder="Mobile Number"
-                        />
+                        <AlternateEmailOutlinedIcon /><input type="email" name="email" value={inputs.email} onChange={handleChange} placeholder="Email" />
+                        <WifiCalling3OutlinedIcon /><input type="text" name="mobile_no" value={inputs.mobile_no} onChange={handleChange} placeholder="Mobile Number" />
                       </div>
                       <div className="col-lg-12 head-form">
-                        <PatternIcon />
-                        <input
-                          type="password"
-                          name="password"
-                          value={inputs.password}
-                          onChange={handleChange}
-                          placeholder="Password"
-                        />
-                        <ChangeCircleOutlinedIcon />
-                        <input
-                          type="file"
-                          name="avatar"
-                          onChange={handleAvatarChange}
-                          placeholder="Avatar"
-                          className="hide_file"
-                        />
+                        <PatternIcon /><input type="password" name="password" value={inputs.password} onChange={handleChange} placeholder="Password" />
+                        <ChangeCircleOutlinedIcon /> <input type="file" name="avatar" onChange={handleAvatarChange} placeholder="Avatar" className="hide_file" />
                       </div>
                       <div className="col-lg-6 downs mb-5">
                         <Box sx={{ minWidth: 120 }}>
                           <FormControl className="userDropdown">
                             <InputLabel htmlFor="demo-simple-select-label">Status</InputLabel>
                             {inputs.status !== null ? (
-                              <Select
-                                labelId="demo-simple-select-label"
-                                id="demo-simple-select"
-                                name="status"
-                                value={inputs.status}
-                                onChange={handleChange}
-                                label="Status"
-                              >
+                              <Select labelId="demo-simple-select-label" id="demo-simple-select" name="status" value={inputs.status} onChange={handleChange} label="Status"  >
                                 <MenuItem value={1}>Active</MenuItem>
                                 <MenuItem value={0}>Inactive</MenuItem>
                               </Select>
@@ -211,53 +137,15 @@ export default function UserEdit() {
                           </FormControl>
                         </Box>
                       </div>
-                      <div className='col-lg-6 head-form'>
-                        <label>
-                          <Checkbox
-                            name="is_edit"
-                            checked={inputs.is_edit}
-                            onChange={handleCheckboxChange}
-                          />
-                          Edit
-                        </label>
-                        <br />
 
-                        <label>
-                          <Checkbox
-                            name="is_delete"
-                            checked={inputs.is_delete}
-                            onChange={handleCheckboxChange}
-                          />
-                          Delete
-                        </label>
-                        <br />
-
-                      </div>
-                      <div className='col-lg-6 head-form'>
-                        <label>
-                          <Checkbox
-                            name="is_create"
-                            checked={inputs.is_create}
-                            onChange={handleCheckboxChange}
-                          />
-                          Create
-                        </label>
-                        <br />
-                        <label >
-                          <Checkbox
-                            name="is_view"
-                            checked={inputs.is_view}
-                            onChange={handleCheckboxChange}
-                          />
-                          View
-                        </label>
-                        <br />
-
+                      <div className='col-lg-6 w-50 form-control downs mb-5'>
+                        <label><Checkbox name="is_edit" checked={inputs.is_edit} onChange={handleCheckboxChange} /> Edit </label>
+                        <label><Checkbox name="is_delete" checked={inputs.is_delete} onChange={handleCheckboxChange} /> Delete </label>
+                        <label><Checkbox name="is_create" checked={inputs.is_create} onChange={handleCheckboxChange} />  Create </label>
+                        <label><Checkbox name="is_view" checked={inputs.is_view} onChange={handleCheckboxChange} /> View</label>
                       </div>
                       <div className="col-lg-6 uploads">
-                        <button type="submit" className='submitBtn'>
-                          Update<SaveAltOutlinedIcon className='ms-3' />
-                        </button>
+                        <button type="submit" className='submitBtn'>Update<SaveAltOutlinedIcon className='ms-3' /> </button>
                       </div>
                     </div>
                   </Form>
@@ -267,6 +155,6 @@ export default function UserEdit() {
           </div>
         </div>
       </div>
-    </div>
+    </div >
   );
 }

@@ -3,51 +3,14 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { styled } from '@mui/material/styles';
 import { ToastContainer, toast } from 'react-toastify';
 import { FontAwesome, PensileIcon, DeleteIcon, EyeIcon, ContactsOutlinedIcon, PersonAddAltTwoToneIcon, ToggleOffOutlinedIcon, MarkEmailReadOutlinedIcon, ThumbUpAltOutlinedIcon, BadgeOutlinedIcon, PhoneCallbackOutlinedIcon, CropOriginalOutlinedIcon } from '../../component/icon';
-import { Table, TableBody, TableCell, tableCellClasses, TableContainer, TableHead, TableRow, Paper, Stack, Button, FormControl, InputLabel, MenuItem, Select, } from '@mui/material';
+import { Table, TableBody, TableContainer, TableHead, TableRow, Paper, Stack, Button, FormControl, InputLabel, MenuItem, Select, } from '@mui/material';
 import http from '../../http';
 import Navbar from '../../component/Navbar';
 import Sidebar from '../../component/Sidebar';
+import { headingStyle, avatarStyle, StyledTableCell, StyledTableRow } from '../../common/commonStyle';
 import 'react-toastify/dist/ReactToastify.css';
-
-
-
-const StyledTableCell = styled(TableCell)(({ theme }) => ({
-    [`&.${tableCellClasses.head}`]: {
-        fontSize: 18,
-    },
-    [`&.${tableCellClasses.body}`]: {
-        fontSize: 15,
-    },
-}));
-
-const StyledTableRow = styled(TableRow)(({ theme }) => ({
-    '&:nth-of-type(odd)': {
-        backgroundColor: theme.palette.action.hover,
-    },
-    // hide last border
-    '&:last-child td, &:last-child th': {
-        border: 0,
-    },
-}));
-
-// Styles for the avatar
-const avatarStyle = {
-    width: '50px',
-    height: '50px',
-    borderRadius: '50%',
-    boxShadow: ' rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px'
-
-}
-// Styles for the heading
-const headingStyle = {
-    color: 'red',
-    fontSize: '24px',
-    background: 'black',
-    padding: '20px',
-};
 
 const UserIndex = () => {
     const navigate = useNavigate();
@@ -57,6 +20,7 @@ const UserIndex = () => {
     const loggedInUserId = loggedInUser.id;
     const [loggedInUserPermissions, setLoggedInUserPermissions] = useState([]);
     console.log('login user id :', loggedInUserId);
+    console.log('login permission :', loggedInUserPermissions);
     const [data, setData] = useState([]);
     const [, setRole] = useState([]);
     const [, setLoading] = useState(true);
@@ -75,7 +39,6 @@ const UserIndex = () => {
         const delaySearch = setTimeout(() => {
             setDebouncedSearchQuery(searchQuery);
         }, 300);
-
         return () => {
             clearTimeout(delaySearch);
         };
@@ -83,10 +46,14 @@ const UserIndex = () => {
 
 
     useEffect(() => {
+
+        console.log('login user id :', loggedInUserId);
+        // console.log('login permission :', loggedInUserPermissions);
         fetchLoggedInUserPermissions(loggedInUserId);
         fetchRole();
         fetchData();
     }, [currentPage, rowsPerPage, sortField, sortOrder, debouncedSearchQuery]);
+
 
     const fetchLoggedInUserPermissions = async (userId) => {
         try {
@@ -230,6 +197,7 @@ const UserIndex = () => {
                                         <p> All User Listing Bellow to....</p>
                                     </header>
                                 </div>
+
                                 {userRole === "1" ? (
                                     <Stack spacing={2} direction='row' className='m-3'>
                                         <Button variant='contained' onClick={Create}>
@@ -238,7 +206,7 @@ const UserIndex = () => {
                                     </Stack>
                                 ) : (
                                     <>
-                                        {loggedInUserPermissions.find((perm) => perm.is_create === 1) ? (
+                                        {loggedInUserPermissions.find((perm) => parseInt(perm.is_create) === 1) ? (
                                             <Stack spacing={2} direction='row' className='m-3'>
                                                 <Button variant='contained' onClick={Create}>
                                                     Create <PersonAddAltTwoToneIcon className='ps-2' />
@@ -249,6 +217,7 @@ const UserIndex = () => {
                                         )}
                                     </>
                                 )}
+
                             </div>
                             <TableContainer component={Paper}>
                                 <Table sx={{ minWidth: 600 }} aria-label='customized table'>
@@ -333,44 +302,54 @@ const UserIndex = () => {
                                                         </span>
                                                     </StyledTableCell>
 
-
                                                     <StyledTableCell align='right' className='d-flex'>
                                                         {userRole === "1" ? (
+                                                            // Admin user can perform all actions
                                                             <>
                                                                 <a className='delete' onClick={() => handleDelete(user.id)}>
                                                                     <FontAwesome icon={DeleteIcon} />
                                                                 </a>
-
                                                                 <a className='edit' onClick={() => Edit(user.id)}>
                                                                     <FontAwesome icon={PensileIcon} />
                                                                 </a>
-
                                                                 <a className='show' onClick={() => Show(user.id)}>
                                                                     <FontAwesome icon={EyeIcon} />
                                                                 </a>
-
                                                             </>
                                                         ) : (
-
+                                                            // Non-admin users have permission checks
                                                             <>
-                                                                {loggedInUserPermissions.find((perm) => perm.is_delete === 1) && (
+                                                                {loggedInUserPermissions.find((perm) => parseInt(perm.is_delete) === 1) ? (
                                                                     <a className='delete' onClick={() => handleDelete(user.id)}>
                                                                         <FontAwesome icon={DeleteIcon} />
                                                                     </a>
-                                                                )}
-                                                                {loggedInUserPermissions.find((perm) => perm.is_edit === 1) && (
+                                                                ) : null}
+
+                                                                {loggedInUserPermissions.find((perm) => parseInt(perm.is_edit) === 1) ? (
                                                                     <a className='edit' onClick={() => Edit(user.id)}>
                                                                         <FontAwesome icon={PensileIcon} />
                                                                     </a>
-                                                                )}
-                                                                {loggedInUserPermissions.find((perm) => perm.is_view === 1) && (
+                                                                ) : null}
+
+                                                                {loggedInUserPermissions.find((perm) => parseInt(perm.is_view) === 1) ? (
                                                                     <a className='show' onClick={() => Show(user.id)}>
                                                                         <FontAwesome icon={EyeIcon} />
                                                                     </a>
-                                                                )}
+                                                                ) : null}
+
+                                                                {/* Add more conditions for other actions */}
+
+                                                                {loggedInUserPermissions.every((perm) => parseInt(perm.is_create) !== 1) &&
+                                                                    !loggedInUserPermissions.some((perm) => parseInt(perm.is_edit) === 1) &&
+                                                                    !loggedInUserPermissions.some((perm) => parseInt(perm.is_delete) === 1) &&
+                                                                    !loggedInUserPermissions.some((perm) => parseInt(perm.is_view) === 1) ? (
+                                                                    <span style={{ color: 'red' }}>No permission allow for all actions</span>
+                                                                ) : null}
                                                             </>
                                                         )}
                                                     </StyledTableCell>
+
+
                                                 </StyledTableRow>
                                             ))
                                         ) : (
