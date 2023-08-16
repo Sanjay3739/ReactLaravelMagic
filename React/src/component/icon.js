@@ -41,25 +41,25 @@ export const Box = Boxes;
 export const Form = Forms;
 export const Select = SelectBox;
 export const EyeIcon = faEye;
-export const DeleteIcon = faTrash;
-export const PensileIcon = faPencilAlt;
+export const DeleteIcon = faTrash;//
+export const PensileIcon = faPencilAlt;//
 export const MenuItem = MenuItems;
 export const Checkbox = checkboxes;
 export const InputLabel = MuiInputLabel;
 export const FormControl = FormControls;
-export const FontAwesome = FontAwesomeIcon;
+export const FontAwesome = FontAwesomeIcon;//
 export const PatternIcon = PatternIcons;
 export const ControlCameraIcon = ControlsCameraIcon;
-export const SaveAltOutlinedIcon = BtnSaveIcon;//
+export const SaveAltOutlinedIcon = BtnSaveIcon;
 export const ContactsOutlinedIcon = ContactIcon;
-export const WifiCalling3OutlinedIcon = WifiIcon;//
+export const WifiCalling3OutlinedIcon = WifiIcon;
 export const PersonAddAltTwoToneIcon = AddNewPerson;
-export const AlternateEmailOutlinedIcon = EmailSendIcon;//
-export const PeopleAltOutlinedIcon = PeopleAltOutlinedIcons;//
-export const VpnKeyOutlinedIcon = Vpn;//
-export const PermIdentityOutlinedIcon = Identity;//
+export const AlternateEmailOutlinedIcon = EmailSendIcon;
+export const PeopleAltOutlinedIcon = PeopleAltOutlinedIcons;
+export const VpnKeyOutlinedIcon = Vpn;
+export const PermIdentityOutlinedIcon = Identity;
 export const ReplyAllOutlinedIcon = Replay;
-export const ChangeCircleOutlinedIcon = ChangeCircleOutlinedIcons;//
+export const ChangeCircleOutlinedIcon = ChangeCircleOutlinedIcons;
 export {
     CropOriginalOutlinedIcon,
     ToggleOffOutlinedIcon,
