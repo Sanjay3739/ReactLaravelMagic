@@ -41,7 +41,6 @@ export default function AccountDetails() {
     fetchUser();
     fetchCountries();
     fetchOccupations();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const fetchCountries = async () => {

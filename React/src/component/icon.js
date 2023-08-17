@@ -25,6 +25,7 @@ import Handshake from "@mui/icons-material/SensorOccupiedOutlined";
 import ProfilePageIcon from "@mui/icons-material/ContactPageOutlined";
 import LogoutIcon from "@mui/icons-material/LogoutOutlined";
 import AddPersonIcon from "@mui/icons-material/PersonAddAltOutlined";
+import { Stack } from '@mui/material';
 import { BadgeOutlined, ToggleOffOutlined, ThumbUpAltOutlined, PersonAddAltTwoTone, SensorOccupiedOutlined, } from "@mui/icons-material";
 import {
     CropOriginalOutlined as CropOriginalOutlinedIcon,
@@ -68,6 +69,7 @@ export const LogoutOutlinedIcon = LogoutIcon;
 export const ContactPageOutlinedIcon = ProfilePageIcon;
 export const PersonAddAltOutlinedIcon = AddPersonIcon;
 export const VpnKeyOutlinedIcon = Vpn;
+export const Stacks = Stack;
 export const HandshakeRoundedIcon = Handshake;
 export const PermIdentityOutlinedIcon = Identity;
 export const ReplyAllOutlinedIcon = Replay;

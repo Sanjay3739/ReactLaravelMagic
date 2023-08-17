@@ -64,74 +64,22 @@ const Login = () => {
           <div className="background">
             <form onSubmit={handleSubmit}>
               <div className="cover">
-                <header className="head-form">
-                  <h2>Log In</h2>
-                  <hr />
-                  <p>login here using your username and password</p>
-                </header>
-                {/* <br /> */}
+                <header className="head-form"><h2>Log In</h2><hr /><p>login here using your username and password</p></header>
                 {error && <p className="error-message">{error}</p>}
-
                 <div className="field-set">
-                  <span className="input-item">
-                    <i className="fa fa-user-circle"></i>
-                  </span>
-                  <input
-                    className="form-input"
-                    id="txt-input"
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    required
-                    placeholder="@Email"
-                  />
+                  <span className="input-item"><i className="fa fa-user-circle"></i></span>
+                  <input className="form-input" id="txt-input"  type="email" value={email}  onChange={(e) => setEmail(e.target.value)} required placeholder="@Email" />
                   <br />
-
-                  <span className="input-item">
-                    <i className="fa fa-key"></i>
-                  </span>
-                  <input
-                    className="form-input"
-                    type="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    placeholder="Password"
-                    id="pwd"
-                    name="password"
-                    required
-                  />
-                  <span>
-                    {" "}
-                    <i
-                      className="fa fa-eye"
-                      aria-hidden="true"
-                      type="button"
-                      id="eye"
-                    ></i>{" "}
-                  </span>
+                  <span className="input-item"><i className="fa fa-key"></i></span>
+                  <input className="form-input" type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" id="pwd" name="password"  required  />
+                  <span> {" "}  <i className="fa fa-eye" aria-hidden="true"  type="button" id="eye" ></i>{" "}</span>
                   <br />
-
                   <FormControl sx={{ mt: 2, minWidth: 180 }}>
-                    <InputLabel id="demo-simple-select-helper-label">
-                      Role
-                    </InputLabel>
-                    <Select
-                      labelId="demo-simple-select-helper-label"
-                      id="demo-simple-select-helper"
-                      className="drop"
-                      value={selectedRole}
-                      onChange={(e) => setSelectedRole(e.target.value)}
-                      label="Role"
-                    >
-                      <MenuItem value="">
-                        {" "}
-                        <em>None</em>{" "}
-                      </MenuItem>
+                    <InputLabel id="demo-simple-select-helper-label">Role</InputLabel>
+                    <Select labelId="demo-simple-select-helper-label" id="demo-simple-select-helper" className="drop" value={selectedRole} onChange={(e) => setSelectedRole(e.target.value)} label="Role" >
+                      <MenuItem value="">{" "} <em>None</em>{" "}</MenuItem>
                       {roles.map((role) => (
-                        <MenuItem key={role.id} value={role.id}>
-                          {" "}
-                          {role.name}{" "}
-                        </MenuItem>
+                        <MenuItem key={role.id} value={role.id}>{" "} {role.name}{" "}</MenuItem>
                       ))}
                     </Select>
                   </FormControl>
@@ -141,13 +89,7 @@ const Login = () => {
             </form>
             <div className="other">
               <button className="btn submits forgot" onClick={handleChange}>Forgot Password</button>
-              <button className="btn submits sign-up" onClick={handleSignUp}>
-                {" "}
-                Sign Up <i
-                  className="fa fa-user-plus"
-                  aria-hidden="true"
-                ></i>{" "}
-              </button>
+              <button className="btn submits sign-up" onClick={handleSignUp}>Sign Up<i className="fa fa-user-plus" aria-hidden="true" ></i></button>
             </div>
           </div>
         </div>

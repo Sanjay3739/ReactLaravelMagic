@@ -54,7 +54,6 @@ const RoleCreate = () => {
       toast.error("Role not created successfully");
     }
   };
-
   
   return (
     <div className="d-flex">
