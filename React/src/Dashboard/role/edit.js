@@ -20,7 +20,6 @@ const RoleEdit = () => {
 
   useEffect(() => {
     fetchUser();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const fetchUser = async () => {
@@ -28,7 +27,6 @@ const RoleEdit = () => {
       const response = await http.get(`/roles/${id}`);
       const userData = response.data;
       const statusValue = userData.status ? 1 : 0;
-
       setFormData({
         name: userData.name,
         status: statusValue,
@@ -64,27 +62,16 @@ const RoleEdit = () => {
     }
   };
 
-
   return (
     <div>
       <div className="d-flex">
-        <div className="col-lg-2">
-          <Sidebar />
-        </div>
-        <div className="col-lg-10">
-          <Navbar />
+        <div className="col-lg-2"><Sidebar /></div>
+        <div className="col-lg-10"><Navbar />
           <div className="col-lg-12">
-            <h1 style={headingStyle}>
-              <SensorOccupiedOutlined /> Roles
-            </h1>
+            <h1 style={headingStyle}><SensorOccupiedOutlined /> Roles</h1>
             <div className="container w-50 ">
               <div className="card">
-                <header className="head-forms ">
-                  <h2>Role Edit Page</h2>
-                  <hr />
-                  <p>Below Role Detail Form Edit!.............</p>
-                </header>
-
+                <header className="head-forms "><h2>Role Edit Page</h2><hr /><p>Below Role Detail Form Edit!.............</p></header>
                 <div className="inputField">
                   <div className="row">
                     <RoleForm

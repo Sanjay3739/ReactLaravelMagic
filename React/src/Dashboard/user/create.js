@@ -104,34 +104,16 @@ const UserCreate = () => {
   return (
     <div>
       <div className='d-flex'>
-        <div className='col-lg-2'>
-          <Sidebar />
-        </div>
-        <div className='col-lg-10'>
-          <Navbar />
+        <div className='col-lg-2'><Sidebar /></div>
+        <div className='col-lg-10'><Navbar />
           <div className='col-lg-12'>
-            <h1 style={headingStyle}>
-              <ContactsOutlinedIcon /> User
-            </h1>
+            <h1 style={headingStyle}><ContactsOutlinedIcon /> User</h1>
             <div className='container-fluid'>
               <div className='card'>
-                <header className='head-forms'>
-                  <h2>User Detail Create Page</h2>
-                  <hr />
-                  <p>Below User Detail Form Fill!.............</p>
-                </header>
+                <header className='head-forms'><h2>User Detail Create Page</h2><hr /><p>Below User Detail Form Fill!.............</p></header>
                 <div className='inputField'>
                   <div className='row'>
-                    <UserForm
-                      formData={formData}
-                      handleInputChange={handleInputChange}
-                      handleStatusChange={handleStatusChange}
-                      handleFileChange={handleFileChange}
-                      handleCheckboxChange={handleCheckboxChange}
-                      handleSubmit={handleSubmit}
-                      errors={errors}
-                      roleOptions={role}
-                    />
+                    <UserForm formData={formData} handleInputChange={handleInputChange} handleStatusChange={handleStatusChange} handleFileChange={handleFileChange}  handleCheckboxChange={handleCheckboxChange} handleSubmit={handleSubmit} errors={errors} roleOptions={role} />
                   </div>
                 </div>
               </div>

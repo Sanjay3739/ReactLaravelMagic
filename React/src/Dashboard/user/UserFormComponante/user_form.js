@@ -51,11 +51,11 @@ const UserForm = ({ formData, handleInputChange, handleStatusChange, handleFileC
                 </div>
             </div>
             {/* checkbox */}
-            <div className='col-lg-6 form-control mb-5'>
-                <label><input className='checkbox-container' type="checkbox" name="is_edit" checked={formData.is_edit} onChange={handleCheckboxChange} />Edit</label>
-                <label><input className='checkbox-container' type="checkbox" name="is_delete" checked={formData.is_delete} onChange={handleCheckboxChange} />Delete</label>
-                <label><input className='checkbox-container' type="checkbox" name="is_create" checked={formData.is_create} onChange={handleCheckboxChange} />Create</label>
-                <label><input className='checkbox-container' type="checkbox" name="is_view" checked={formData.is_view} onChange={handleCheckboxChange} />View</label>
+            <div className='col-lg-6 form-control w-75 check ms-3  mb-5'>
+                <label><input className='checkbox-container form-check-input' type="checkbox" name="is_edit" checked={formData.is_edit} onChange={handleCheckboxChange} />Edit</label>
+                <label><input className='checkbox-container form-check-input' type="checkbox" name="is_delete" checked={formData.is_delete} onChange={handleCheckboxChange} />Delete</label>
+                <label><input className='checkbox-container form-check-input' type="checkbox" name="is_create" checked={formData.is_create} onChange={handleCheckboxChange} />Create</label>
+                <label><input className='checkbox-container form-check-input' type="checkbox" name="is_view" checked={formData.is_view} onChange={handleCheckboxChange} />View</label>
             </div>
             <div className="col-lg-6 uploads">
                 <button className='submitBtn'>Submit<SaveAltOutlinedIcon className='ms-3' /></button>

@@ -69,7 +69,6 @@ export default function UserEdit() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
     const formData = new FormData();
     formData.append('_method', 'PATCH');
     formData.append('first_name', inputs.first_name);
@@ -82,8 +81,7 @@ export default function UserEdit() {
     formData.append('is_delete', inputs.is_delete ? 1 : 0);
     formData.append('is_create', inputs.is_create ? 1 : 0);
     formData.append('is_edit', inputs.is_edit ? 1 : 0);
-
-
+    
     if (inputs.avatar !== null) {
       formData.append('avatar', inputs.avatar);
     }
@@ -122,27 +120,30 @@ export default function UserEdit() {
                         <PatternIcon /><input type="password" name="password" value={inputs.password} onChange={handleChange} placeholder="Password" />
                         <ChangeCircleOutlinedIcon /> <input type="file" name="avatar" onChange={handleAvatarChange} placeholder="Avatar" className="hide_file" />
                       </div>
-                      <div className="col-lg-6 downs mb-5">
-                        <Box sx={{ minWidth: 120 }}>
-                          <FormControl className="userDropdown">
-                            <InputLabel htmlFor="demo-simple-select-label">Status</InputLabel>
-                            {inputs.status !== null ? (
-                              <Select labelId="demo-simple-select-label" id="demo-simple-select" name="status" value={inputs.status} onChange={handleChange} label="Status"  >
-                                <MenuItem value={1}>Active</MenuItem>
-                                <MenuItem value={0}>Inactive</MenuItem>
-                              </Select>
-                            ) : (
-                              <div>Loading...</div>
-                            )}
-                          </FormControl>
-                        </Box>
-                      </div>
-
-                      <div className='col-lg-6 w-50 form-control downs mb-5'>
-                        <label><Checkbox name="is_edit" checked={inputs.is_edit} onChange={handleCheckboxChange} /> Edit </label>
-                        <label><Checkbox name="is_delete" checked={inputs.is_delete} onChange={handleCheckboxChange} /> Delete </label>
-                        <label><Checkbox name="is_create" checked={inputs.is_create} onChange={handleCheckboxChange} />  Create </label>
-                        <label><Checkbox name="is_view" checked={inputs.is_view} onChange={handleCheckboxChange} /> View</label>
+                      <div className="col-lg-12 d-flex rows">
+                        <div className='col-lg-6 me-2 sd'>
+                          <div className=' ms-5 check form-control'>
+                            <label><Checkbox name="is_edit" checked={inputs.is_edit} onChange={handleCheckboxChange} /> Edit </label>
+                            <label><Checkbox name="is_delete" checked={inputs.is_delete} onChange={handleCheckboxChange} /> Delete </label>
+                            <label><Checkbox name="is_create" checked={inputs.is_create} onChange={handleCheckboxChange} />  Create </label>
+                            <label><Checkbox name="is_view" checked={inputs.is_view} onChange={handleCheckboxChange} /> View</label>
+                          </div>
+                        </div>
+                        <div className='col-lg-6   ms-5'>
+                          <Box sx={{ minWidth: 120 }}>
+                            <FormControl className="userDropdown">
+                              <InputLabel htmlFor="demo-simple-select-label">Status</InputLabel>
+                              {inputs.status !== null ? (
+                                <Select labelId="demo-simple-select-label" id="demo-simple-select" name="status" value={inputs.status} onChange={handleChange} label="Status"  >
+                                  <MenuItem value={1}>Active</MenuItem>
+                                  <MenuItem value={0}>Inactive</MenuItem>
+                                </Select>
+                              ) : (
+                                <div>Loading...</div>
+                              )}
+                            </FormControl>
+                          </Box>
+                        </div>
                       </div>
                       <div className="col-lg-6 uploads">
                         <button type="submit" className='submitBtn'>Update<SaveAltOutlinedIcon className='ms-3' /> </button>

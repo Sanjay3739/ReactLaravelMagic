@@ -9,7 +9,6 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import OccupationForm from '../occupation/OccupationFormComponante/occupation_form';
 
-
 const OccupationCreate = () => {
   const navigate = useNavigate();
   const [errors, setErrors] = useState({});
@@ -54,22 +53,12 @@ const OccupationCreate = () => {
 
   return (
     <div className="d-flex">
-      <div className="col-lg-2">
-        <Sidebar />
-      </div>
-      <div className="col-lg-10">
-        <Navbar />
-        <div className="col-lg-12">
-          <h1 style={headingStyle}>
-            <HandshakeRoundedIcon /> Occupation
-          </h1>
+      <div className="col-lg-2"><Sidebar /></div>
+      <div className="col-lg-10"><Navbar />
+        <div className="col-lg-12"><h1 style={headingStyle}><HandshakeRoundedIcon />Occupation</h1>
           <div className="container w-50">
             <div className="card">
-              <header className="head-forms mt-3">
-                <h2>Occupation Create Page</h2>
-                <hr />
-                <p>Below Occupation Detail Form Fill!.............</p>
-              </header>
+              <header className="head-forms mt-3"><h2>Occupation Create Page</h2><hr /> <p>Below Occupation Detail Form Fill!.............</p></header>
               <div className="inputField">
                 <div className="row">
                   <OccupationForm
@@ -79,7 +68,6 @@ const OccupationCreate = () => {
                     handleSubmit={handleSubmit}
                     errors={errors}
                   />
-
                 </div>
               </div>
             </div>
@@ -87,9 +75,7 @@ const OccupationCreate = () => {
         </div>
       </div>
     </div>
-
   );
 };
-
 export default OccupationCreate;
 

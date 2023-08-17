@@ -20,7 +20,6 @@ const OccupationEdit = () => {
 
   useEffect(() => {
     fetchOccupation();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const fetchOccupation = async () => {
@@ -56,9 +55,8 @@ const OccupationEdit = () => {
       status: formData.status, // Make sure it's a boolean value
     };
 
-
     try {
-      await http.patch(`http://localhost:8000/api/occupation/${id}`, updatedData);
+      await http.patch(`/occupation/${id}`, updatedData);
       toast.success("Occupation Updated successfully");
       navigate("/occupation/index");
     } catch (error) {
@@ -69,22 +67,12 @@ const OccupationEdit = () => {
   return (
     <div>
       <div className="d-flex">
-        <div className="col-lg-2">
-          <Sidebar />
-        </div>
-        <div className="col-lg-10">
-          <Navbar />
-          <div className="col-lg-12">
-            <h1 style={headingStyle}>
-              <HandshakeRoundedIcon /> Occupation
-            </h1>
+        <div className="col-lg-2"><Sidebar /> </div>
+        <div className="col-lg-10"><Navbar />
+          <div className="col-lg-12"><h1 style={headingStyle}><HandshakeRoundedIcon />Occupation </h1>
             <div className="container w-50 mt-5">
               <div className="card">
-                <header className="head-forms mt-3">
-                  <h2>Occupation Edit Page</h2>
-                  <hr />
-                  <p>Below Occupation Detail Form Edit!.............</p>
-                </header>
+                <header className="head-forms mt-3"><h2>Occupation Edit Page</h2><hr /><p>Below Occupation Detail Form Edit!.............</p></header>
                 <div className="inputField">
                   <div className="row">
                     <OccupationForm

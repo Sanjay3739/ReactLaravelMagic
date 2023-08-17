@@ -58,23 +58,13 @@ const RoleCreate = () => {
   
   return (
     <div className="d-flex">
-      <div className="col-lg-2">
-        <Sidebar />
-      </div>
-      <div className="col-lg-10">
-        <Navbar />
+      <div className="col-lg-2"><Sidebar /></div>
+      <div className="col-lg-10"><Navbar />
         <div className="col-lg-12">
-          <h1 style={headingStyle}>
-            <SensorOccupiedOutlined /> Roles
-          </h1>
+          <h1 style={headingStyle}><SensorOccupiedOutlined /> Roles </h1>
           <div className="container w-50">
             <div className="card">
-              <header className="head-forms">
-                <h2>Roles Create Page</h2>
-                <hr />
-                <p>Below Roles Detail Form Fill!.............</p>
-              </header>
-
+              <header className="head-forms"> <h2>Roles Create Page</h2> <hr /><p>Below Roles Detail Form Fill!.............</p></header>
               <div className="inputField">
                 <div className="row">
                   <RoleForm
@@ -84,7 +74,6 @@ const RoleCreate = () => {
                     handleSubmit={handleSubmit}
                     errors={errors}
                   />
-
                 </div>
               </div>
             </div>

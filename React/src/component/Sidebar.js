@@ -75,9 +75,9 @@ export default function Sidebar() {
         <div className="userdropdown">
           {isDropdownOpen && (
             <ul>
-              <li onClick={() => userProfile(user.id)}><ContactPageOutlinedIcon /> My Profile </li>
-              <li onClick={() => userProfileEdit(user.id)}><PersonAddAltOutlinedIcon /> Edit Profile </li>
-              <li onClick={handleLogout}><LogoutOutlinedIcon />  Logout </li>
+              <li onClick={() => userProfile(user.id)}><ContactPageOutlinedIcon />My Profile </li>
+              <li onClick={() => userProfileEdit(user.id)}><PersonAddAltOutlinedIcon />Edit Profile </li>
+              <li onClick={handleLogout}><LogoutOutlinedIcon />Logout </li>
             </ul>
           )}
         </div>
@@ -85,14 +85,14 @@ export default function Sidebar() {
           <section className="discover">
             <h3>Discover</h3>
             <ul>
-              <li><a href="#" onClick={handleDashboard}><DashboardIcon /> Dashboard </a> </li>
-              <li><a href="#" onClick={handleUser}><UserIcon /> Users </a> </li>
-              <li><a href="#" onClick={handleRole}><RoleIcon /> Role </a> </li>
-              <li><a href="#" onClick={handleOccupation}><OccupationIcon /> Occupations </a> </li>
+              <li><a href="#" onClick={handleDashboard}><DashboardIcon />Dashboard </a> </li>
+              <li><a href="#" onClick={handleUser}><UserIcon />Users </a> </li>
+              <li><a href="#" onClick={handleRole}><RoleIcon />Role </a> </li>
+              <li><a href="#" onClick={handleOccupation}><OccupationIcon />Occupations </a> </li>
             </ul>
           </section>
           <section className="discover">
-            <h3>Finance</h3>
+            <h3>THEME</h3>
             <ul>
               <div className="switch-holder box">
                 <div className="switch-label"> <BluetoothIcon /> <span className="ps-2"></span> </div>

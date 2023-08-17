@@ -15,7 +15,6 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-
 }
 
 .error {
@@ -46,8 +45,8 @@ body {
     padding: 7px;
     border-radius: 7px;
 }
-/* Global CSS or Styling Module */
 
+/* Global CSS or Styling Module */
 .edit,
 .delete,
 .show {
@@ -103,6 +102,10 @@ body {
     text-align: center
 }
 
+.rows>.head-form {
+    margin-left: 10%;
+}
+
 .inputField {
     display: grid;
     place-items: center
@@ -119,7 +122,8 @@ body {
     color: #000;
     outline: none;
     border: none;
-    transition: .1s linear
+    transition: .1s linear;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .row>.head-form {
@@ -134,9 +138,10 @@ body {
     background-color: #fff
 }
 
-.drops{
+.drops {
     background-color: #ffff;
 }
+
 .sets {
     font-family: 'Abel', sans-serif;
     display: flex;
@@ -205,7 +210,6 @@ input[type=file]::file-selector-button:hover {
     border-radius: 5px;
     padding: 15px;
 }
-
 
 .details {
     margin-bottom: 20px
@@ -288,10 +292,11 @@ input[type=file]::file-selector-button:hover {
     font-weight: 500
 }
 
-.good{
+.good {
     font-size: 18px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
+
 button {
     display: inline-block;
     color: #252537;
@@ -322,7 +327,8 @@ button {
     box-shadow: rgba(60, 64, 67, 0.3) 0 1px 2px 0px, rgba(60, 64, 67, 0.15) 0 1px 3px 1px;
     background-color: #FFE6FA
 }
-.reset_btn{
+
+.reset_btn {
     background: #B8F2E6;
     box-shadow: rgba(60, 64, 67, 0.3) 0 1px 2px 0px, rgba(60, 64, 67, 0.15) 0 1px 3px 1px;
     background-color: #FFE6FA
@@ -345,13 +351,15 @@ button:hover {
     box-shadow: rgba(60, 64, 67, 0.3) 0 1px 2px 0px, rgba(60, 64, 67, 0.15) 0 1px 3px 1px;
     animation: ani9 .4s ease-in-out infinite alternate
 }
+
 .parent {
     display: flex;
-   
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically */
+    justify-content: center;
+    /* Center horizontally */
+    align-items: center;
+    /* Center vertically */
     /* Additional styles for the parent div */
-  }
+}
 
 aside {
     height: 70px
@@ -366,27 +374,31 @@ aside {
         transform: translateY(10px)
     }
 }
-.reset_height{
+
+.reset_height {
     height: 350px;
-    background-size: cover; /* Adjust as needed */
+    background-size: cover;
+    /* Adjust as needed */
     background-position: center center;
     background-image: url('../images/87758.jpg') !important;
 }
+
 .submits {
     width: 48%;
     display: inline-block;
     float: left;
-    
     margin-left: 2%
 }
 
 input[id="txt-input"] {
     width: 250px
 }
-.reset_width{
+
+.reset_width {
     height: 1000px;
     width: 50%;
 }
+
 .input-item {
     background: #fff;
     color: #333;
@@ -548,7 +560,8 @@ input[class="form-inputs"] {
 
 .search-wrap {
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
-    /* box-shadow: rgba(0, 0, 0, 0.19) 0 10px 20px, rgba(0, 0, 0, 0.23) 0 6px 6px; */
+    /* box-shadow: rgba(0, 0, 0, 0.19) 0 10px 20px, rgba(0, 0, 0, 0.23) 0 6px 6px;
+    */
     grid-area: search;
     background: #fff;
     border-bottom: 1px solid #ede8f0;
@@ -691,7 +704,8 @@ input[class="form-inputs"] {
     display: block;
     padding: 2px;
     /* border-top: 1px solid #000;
-    border-bottom: 1px solid #000; */
+    border-bottom: 1px solid #000;
+    */
     margin: 1em 0 0
 }
 
@@ -708,13 +722,13 @@ input[class="form-inputs"] {
 }
 
 .menu-wrap nav li a:hover {
-    background-color: rgb(5, 197, 53);
+    background-color: rgb(5, 18, 197);
     border-radius: 10px;
     border-color: rgb(5, 197, 53);
-    /* padding: 8px; */
+    /* padding: 8px;
+    */
     color: #fff !important;
     fill: #fff !important;
-
 }
 
 .menu-wrap nav li a svg {
@@ -794,10 +808,6 @@ input[class="form-inputs"] {
     border-radius: 5px;
     font-size: larger;
     font-weight: 700;
-
-    /* display: flex; */
-    /* flex-direction: column */
-
 }
 
 .content-wrap .info-boxes .info-box {
@@ -848,7 +858,7 @@ input[class="form-inputs"] {
 }
 
 .box {
-    margin-top: 449px ;
+    margin-top: 449px;
     max-width: 900px;
     width: 90%;
     display: flex;
@@ -957,8 +967,7 @@ input[class="form-inputs"] {
     cursor: pointer
 }
 
-.downs
- {
+.downs {
     margin-left: 30%
 }
 
@@ -973,8 +982,6 @@ input[class="form-inputs"] {
 .rounded-circle {
     border-radius: 50% !important
 }
-
-
 
 .card .card-header {
     font-weight: 500
@@ -1023,49 +1030,51 @@ input[class="form-inputs"] {
 /* Custom checkbox container */
 .checkbox-container {
     padding: 10px;
-    margin: 15px;
+    margin-right: 21px;
+    margin-left: 21px;
     cursor: pointer;
-    font-size: 20px; 
+    letter-spacing: 2px;
 }
 
+.sd {
+    padding-left: 25%;
+    /* margin: 10px;
+    */
+}
+
+.check {
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+}
 
 .role_value {
     font-size: 20px;
     letter-spacing: 2px;
 }
 
-
-/* 
-@media only screen and (max-width: 312px) {
-    .discover {
-      background-color: rgb(0, 16, 243);
-    }
-  } */
-
 @media only screen and (min-width: 986px) and (max-width: 1350px) {
     .user {
-       display: flex !important;
-       flex-direction:column;
-       height: 100px !important;
-       /* width:200px */
+        display: flex !important;
+        flex-direction: column;
+        height: 100px !important;
+        /* width:200px */
     }
-    .user-avatar{
+
+    .user-avatar {
         margin-top: 20px;
     }
-    .userdropdown{
+
+    .userdropdown {
         width: 170px;
         margin-left: 5px;
-     
     }
-    figcaption{
+
+    figcaption {
         width: 150px;
         margin-left: 40px !important;
         align-items: center;
     }
 }
 
-
 .css-13sdxoc-MuiTableCell-root {
-   
     line-height: 3.5rem !important;
-   }
+}
