@@ -10,8 +10,6 @@ const headingStyle = {
 
 export { headingStyle };
 
-
-
 const avatarStyle = {
   width: '50px',
   height: '50px',
@@ -21,7 +19,6 @@ const avatarStyle = {
 };
 export { avatarStyle };
 
-
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
     fontSize: 18,
@@ -30,14 +27,12 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
     fontSize: 15,
   },
 }));
-
 export { StyledTableCell };
 
 const StyledTableRow = styled(TableRow)(({ theme }) => ({
   '&:nth-of-type(odd)': {
     backgroundColor: theme.palette.action.hover,
   },
-  // hide last border
   '&:last-child td, &:last-child th': {
     border: 0,
   },

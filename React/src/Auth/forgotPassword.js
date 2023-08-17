@@ -31,27 +31,14 @@ const ForgotPassword = () => {
                                     <hr className='text-white' p-2 />
                                     <p className='text-white'>Your password have been changed ?</p>
                                 </header>
-                                {/* <br /> */}
                                 {successMessage && <div className="good text-success ">{successMessage}</div>}
                                 {errorMessage && <div className="error">{errorMessage}</div>}
-
                                 <div className="field-set m-3 mt-5">
-                                    <span className="input-item">
-                                        <i className="fa fa-user-circle"></i>
-                                    </span>
-                                    <input
-                                        className="form-input"
-                                        id="txt-input"
-                                        type="email"
-                                        value={email}
-                                        onChange={(e) => setEmail(e.target.value)}
-                                        required
-                                        placeholder="@Email"
-                                    />
+                                    <span className="input-item"><i className="fa fa-user-circle"></i></span>
+                                    <input className="form-input" id="txt-input" type="email" value={email} onChange={(e) => setEmail(e.target.value)} required  placeholder="@Email" />
                                     <br />
                                 </div>
                                 <button className="reset_btn m-3">Send Reset Link </button>
-
                             </div>
                         </form>
                     </div>
@@ -59,7 +46,5 @@ const ForgotPassword = () => {
             </div>
         </div>
     );
-
 };
-
 export default ForgotPassword;

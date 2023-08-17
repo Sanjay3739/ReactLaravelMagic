@@ -27,9 +27,6 @@ class UserController extends Controller
 
         return response()->json($users);
     }
-
-
-
     public function store(Request $request)
     {
 
@@ -62,7 +59,6 @@ class UserController extends Controller
             // $avatarPath = $request->file('avatar')->store('avatars', 'public');
             // $user->avatar = $avatarPath;
             $user->avatar = $request->file('avatar')->store('avatars', 'public');
-
         }
         $user->save();
 
@@ -73,7 +69,6 @@ class UserController extends Controller
         $permission->is_delete = $validatedData['is_delete'];
         $permission->is_edit = $validatedData['is_edit'];
         $permission->save();
-
         return response()->json(['message' => 'User created successfully'], 201);
     }
 
@@ -100,7 +95,6 @@ class UserController extends Controller
         return response()->json(User::whereId($id)->first());
     }
 
-
     public function destroy($id)
     {
         $user = User::find($id);
@@ -108,19 +102,89 @@ class UserController extends Controller
         if (!$user) {
             return response()->json(['message' => 'User not found'], 404);
         }
-
         // Delete the user's avatar from storage if it exists
         if ($user->avatar) {
             Storage::delete('public/' . $user->avatar);
         }
-
         $user->delete();
         return response()->json(['message' => 'User deleted successfully'], 200);
     }
 
+    // public function update(Request $request, $id)
+    // {
+    //     // Find the user by ID
+    //     $user = User::findOrFail($id);
 
+    //     if (!$user) {
+    //         return response()->json(['message' => 'User not found'], 404);
+    //     }
+
+    //     // Update user attributes
+    //     $user->first_name = $request->input('first_name');
+    //     $user->last_name = $request->input('last_name');
+    //     $user->email = $request->input('email');
+    //     $user->mobile_no = $request->input('mobile_no');
+    //     $user->status = $request->input('status');
+    //     $user->address = $request->input('address');
+    //     $user->birthday = $request->input('birthday');
+    //     $user->location = $request->input('location');
+    //     $user->gender = $request->input('gender');
+    //     $user->occupation = $request->input('occupation');
+    //     $user->what_you_like = $request->input('what_you_like');
+
+    //     // Handle password update if provided
+    //     if ($request->has('password')) {
+    //         $user->password = bcrypt($request->input('password'));
+    //     }
+
+    //     // Handle avatar upload if provided
+    //     if ($request->hasFile('avatar')) {
+    //         $user->avatar = $request->file('avatar')->store('avatars', 'public');
+
+    //     }
+
+    //     // Save the updated user
+    //     $user->save();
+
+    //     // Update user permissions
+    //     $permissions = Permission::updateOrCreate(
+    //         ['user_id' => $user->id],
+    //         [
+    //             'is_view' => $request->input('is_view'),
+    //             'is_delete' => $request->input('is_delete'),
+    //             'is_create' => $request->input('is_create'),
+    //             'is_edit' => $request->input('is_edit'),
+    //         ]
+    //     );
+    //     $permissions->save();
+    //     return response()->json(['message' => 'User and permissions updated successfully']);
+    // }
     public function update(Request $request, $id)
     {
+        // Validate the incoming request data
+        $validator = Validator::make($request->all(), [
+            'first_name' => 'required|string|max:255',
+            'last_name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users,email,' . $id,
+            'mobile_no' => 'required|string|max:15',
+            'status' => 'required|in:0,1',
+            'address' => 'nullable|string|max:255',
+            'birthday' => 'nullable|date',
+            'location' => 'nullable|string|max:255',
+            'gender' => 'nullable|string|in:male,female',
+            'occupation' => 'nullable|string|max:255',
+            'what_you_like' => 'nullable|string|max:255',
+            'password' => 'nullable|string|min:6',
+            'avatar' => 'nullable|max:2048',
+            'is_view' => 'nullable|boolean',
+            'is_delete' => 'nullable|boolean',
+            'is_create' => 'nullable|boolean',
+            'is_edit' => 'nullable|boolean',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors()], 422);
+        }
 
         // Find the user by ID
         $user = User::findOrFail($id);
@@ -150,7 +214,6 @@ class UserController extends Controller
         // Handle avatar upload if provided
         if ($request->hasFile('avatar')) {
             $user->avatar = $request->file('avatar')->store('avatars', 'public');
-
         }
 
         // Save the updated user
@@ -169,5 +232,6 @@ class UserController extends Controller
         $permissions->save();
         return response()->json(['message' => 'User and permissions updated successfully']);
     }
+
 
 }

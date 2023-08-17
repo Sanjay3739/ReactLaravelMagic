@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/alt-text */
 import React, { useEffect, useState } from "react";
 import { Formik as Formic, Form, Field, ErrorMessage } from "formik";
 import axios from "axios";
@@ -56,132 +55,46 @@ const Registration = () => {
       <div className="set">
         <div className="forms">
           <div className="heads">
-            <header className="head-form">
-              <h2>Sign Up</h2>
-              <hr />
-              <p>Sign up here using your Email, Password and Etx.</p>
-            </header>
+            <header className="head-form"><h2>Sign Up</h2><hr /><p>Sign up here using your Email, Password and Etx.</p></header>
           </div>
-          <Formic
-            initialValues={initialValues}
-            validationSchema={validationSchema}
-            onSubmit={handleSubmit}
-          >
+          <Formic initialValues={initialValues} validationSchema={validationSchema} onSubmit={handleSubmit} >
             {({ isSubmitting }) => (
               <Form>
                 <div className="d-flex flex-column">
-                  <Field
-                    className="form-inputs"
-                    type="text"
-                    name="first_name"
-                    placeholder="First Name"
-                  />
-                  <ErrorMessage
-                    name="first_name"
-                    component="div"
-                    className="error-message"
-                  />
+                  <Field className="form-inputs" type="text" name="first_name" placeholder="First Name" />
+                  <ErrorMessage name="first_name" component="div" className="error-message" />
                 </div>
-
                 <div className="d-flex flex-column">
-                  <Field
-                    className="form-inputs"
-                    type="text"
-                    name="last_name"
-                    placeholder="Last Name"
-                  />
-                  <ErrorMessage
-                    name="last_name"
-                    component="div"
-                    className="error-message"
-                  />
+                  <Field className="form-inputs" type="text" name="last_name" placeholder="Last Name" />
+                  <ErrorMessage name="last_name" component="div" className="error-message" />
                 </div>
-
                 <div className="d-flex flex-column">
-                  <Field
-                    className="form-inputs"
-                    type="text"
-                    name="mobile_no"
-                    placeholder="Phone Number"
-                  />
-                  <ErrorMessage
-                    name="mobile_no"
-                    component="div"
-                    className="error-message"
-                  />
+                  <Field className="form-inputs" type="text" name="mobile_no" placeholder="Phone Number" />
+                  <ErrorMessage name="mobile_no" component="div" className="error-message" />
                 </div>
-
                 <div className="d-flex flex-column">
-                  <Field
-                    className="form-inputs"
-                    type="email"
-                    name="email"
-                    placeholder="Email"
-                  />
-                  <ErrorMessage
-                    name="email"
-                    component="div"
-                    className="error-message"
-                  />
+                  <Field className="form-inputs" type="email" name="email" placeholder="Email" />
+                  <ErrorMessage name="email" component="div" className="error-message" />
                 </div>
-
                 <div className="d-flex flex-column">
-                  <Field
-                    className="form-inputs"
-                    type="password"
-                    name="password"
-                    placeholder="Password"
-                  />
-                  <ErrorMessage
-                    name="password"
-                    component="div"
-                    className="error-message"
-                  />
+                  <Field className="form-inputs" type="password" name="password" placeholder="Password" />
+                  <ErrorMessage name="password" component="div" className="error-message" />
                 </div>
-
                 <div className=" drp">
-                  <FormControl
-                    sx={{
-                      mt: 2,
-                      minWidth: 200,
-                      maxHeight: "50px",
-                      backgroundColor: "white",
-                    }}
-                  >
+                  <FormControl sx={{ mt: 2, minWidth: 200, maxHeight: "50px", backgroundColor: "white", }}  >
                     <InputLabel id="role-label">Role</InputLabel>
-                    <Field
-                      as={Select}
-                      name="role_id"
-                      labelId="role-label"
-                      label="Role"
-                    >
-                      <MenuItem value="">
-                        <em>None</em>
-                      </MenuItem>
+                    <Field as={Select} name="role_id" labelId="role-label" label="Role" >
+                      <MenuItem value=""><em>None</em></MenuItem>
                       {role.map((role) => (
-                        <MenuItem key={role.id} value={role.id}>
-                          {role.name}
-                        </MenuItem>
+                        <MenuItem key={role.id} value={role.id}> {role.name}</MenuItem>
                       ))}
                     </Field>
                   </FormControl>
-                  <ErrorMessage
-                    name="role_id"
-                    component="div"
-                    className="error-message"
-                  />
+                  <ErrorMessage name="role_id" component="div" className="error-message" />
                 </div>
-
                 <div>
-                  <button className="log-in" disabled={isSubmitting}>
-                    Sign Up{" "}
-                    <i className="fa fa-user-plus" aria-hidden="true"></i>{" "}
-                  </button>
-                  <ErrorMessage
-                    name="serverError"
-                    component="div"
-                    className="error-message"
-                  />
+                  <button className="log-in" disabled={isSubmitting}> Sign Up{" "} <i className="fa fa-user-plus" aria-hidden="true"></i>{" "}</button>
+                  <ErrorMessage name="serverError" component="div" className="error-message" />
                 </div>
               </Form>
             )}

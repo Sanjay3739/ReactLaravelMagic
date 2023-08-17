@@ -12,6 +12,7 @@ import 'react-toastify/dist/ReactToastify.css';
 export default function UserEdit() {
   const navigate = useNavigate();
   const { id } = useParams();
+  const [errors, setErrors] = useState({});
   const [inputs, setInputs] = useState({
     first_name: '',
     last_name: '',
@@ -81,7 +82,7 @@ export default function UserEdit() {
     formData.append('is_delete', inputs.is_delete ? 1 : 0);
     formData.append('is_create', inputs.is_create ? 1 : 0);
     formData.append('is_edit', inputs.is_edit ? 1 : 0);
-    
+
     if (inputs.avatar !== null) {
       formData.append('avatar', inputs.avatar);
     }
@@ -91,7 +92,11 @@ export default function UserEdit() {
       toast.success('User updated successfully');
       navigate('/user/index');
     } catch (error) {
-      console.error('Error updating user:', error);
+      if (error.response && error.response.data && error.response.data.errors) {
+        setErrors(error.response.data.errors);
+      } else {
+        console.error(error);
+      }
       toast.error('Failed to update user');
     }
   };
@@ -108,6 +113,11 @@ export default function UserEdit() {
                 <div className='inputField'>
                   <Form onSubmit={handleSubmit}>
                     <div className="row">
+                      <div className="col-lg-12 head-form w-25 errors">
+                        {Object.entries(errors).map(([key, value]) => (
+                          <div className="error" key={key}>{value[0]}</div>
+                        ))}
+                      </div>
                       <div className="col-lg-12 head-form">
                         <PeopleAltOutlinedIcon /><input type="text" name="first_name" value={inputs.first_name} onChange={handleChange} placeholder="First Name" />
                         <PeopleAltOutlinedIcon /><input type="text" name="last_name" value={inputs.last_name} onChange={handleChange} placeholder="Last Name" />

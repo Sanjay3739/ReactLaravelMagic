@@ -1,8 +1,7 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import { ContactPageOutlinedIcon, LogoutOutlinedIcon, PersonAddAltOutlinedIcon, DashboardIcon, UserIcon, RoleIcon, OccupationIcon, BluetoothIcon, CountryIcon, BellIcon, SearchIcon } from "../component/icon"
-
+import { ContactPageOutlinedIcon, LogoutOutlinedIcon, PersonAddAltOutlinedIcon, DashboardIcon, UserIcon, RoleIcon, OccupationIcon, BluetoothIcon} from "../component/icon"
 
 export default function Sidebar() {
   const navigate = useNavigate();

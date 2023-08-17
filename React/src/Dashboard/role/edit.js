@@ -46,10 +46,10 @@ const RoleEdit = () => {
     setFormData((prevData) => ({ ...prevData, [name]: parseInt(value) }));
   };
 
-  const handleSubmit = async () => { 
+  const handleSubmit = async () => {
     const updatedData = {
       name: formData.name,
-      status: formData.status, 
+      status: formData.status,
     };
 
     try {
@@ -57,7 +57,11 @@ const RoleEdit = () => {
       toast.success("Role Updated successfully");
       navigate("/role/index");
     } catch (error) {
-      console.error("Error updating role:", error);
+      if (error.response && error.response.data && error.response.data.errors) {
+        setErrors(error.response.data.errors);
+      } else {
+        console.error(error);
+      }
       toast.error("Role Not Updated successfully");
     }
   };
