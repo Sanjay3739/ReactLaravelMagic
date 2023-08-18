@@ -2,11 +2,11 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
-import { ContactsOutlinedIcon} from '../../component/icon';
+import { ContactsOutlinedIcon } from '../../component/icon';
 import http from '../../http';
 import Navbar from '../../component/Navbar';
 import Sidebar from '../../component/Sidebar';
-import Pagination from "../user/UserFormComponante/pagination";
+import UserPagination from "../user/UserFormComponante/pagination";
 import RowPagination from "../user/UserFormComponante/row_pagination";
 import CreateButton from "../user/UserFormComponante/create_btn";
 import UserTableBody from "../user/UserFormComponante/table_body";
@@ -29,7 +29,7 @@ const UserIndex = () => {
     const [searchQuery, setSearchQuery] = useState('');
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
-    const [rowsPerPage, setRowsPerPage] = useState(10);
+    const [rowsPerPage, setRowsPerPage] = useState(7);
     const [sortField, setSortField] = useState("");
     const [sortOrder, setSortOrder] = useState("");
     const [, setShowSuccessAlert] = useState(false);
@@ -77,6 +77,8 @@ const UserIndex = () => {
             setLoading(false);
         }
     };
+    
+
 
     const fetchRole = async () => {
         try {
@@ -189,13 +191,13 @@ const UserIndex = () => {
                             />
                             <div className=" d-flex footer">
                                 <div className="col-lg-2  m-4 dropdown">
-                                    <RowPagination 
+                                    <RowPagination
                                         rowsPerPage={rowsPerPage}
                                         handleRowsPerPageChange={handleRowsPerPageChange}
                                     />
                                 </div>
                                 <div className="pagination col-lg-10 mb-2">
-                                    <Pagination
+                                    <UserPagination
                                         currentPage={currentPage}
                                         totalPages={totalPages}
                                         onPageChange={handlePageChange}

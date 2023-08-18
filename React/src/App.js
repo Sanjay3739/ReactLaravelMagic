@@ -19,6 +19,7 @@ import OccupationCreate from "./Dashboard/occupation/create";
 import AccountDetails from "./Dashboard/profile/editAccountDetails";
 import ForgotPassword from "./Auth/forgotPassword";
 import ResetPassword from "./Auth/resetPassword";
+import ChartComponent from '../src/component/ChartComponent';
 
 function App() {
   return (
@@ -42,6 +43,8 @@ function App() {
       <Route path="/occupation/index" element={<OccupationIndex />} />
       <Route path="/occupation/edit/:id" element={<OccupationEdit />} />
       <Route path="/user/accountdetails/:id" element={<AccountDetails />} />
+      <Route path="/chart" element={<ChartComponent />} />
+
     </Routes>
   );
 }

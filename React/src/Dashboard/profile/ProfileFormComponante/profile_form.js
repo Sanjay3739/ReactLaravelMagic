@@ -14,33 +14,23 @@ const ProfileForm = ({ inputs, handleChange, handleSubmit, errors, occupations, 
     };
     return (
         <Form onSubmit={handelFormDataSubmit}>
-            <div className="errored">
-                {errors.name && <div className="error">{errors.first_name[0]}</div>}
-                {errors.last_name && <div className="error">{errors.last_name[0]}</div>}
-                {errors.email && <div className="error">{errors.email[0]}</div>}
-                {errors.mobile_no && <div className="error">{errors.mobile_no[0]}</div>}
-                {errors.status && <div className="error">{errors.status[0]}</div>}
-                {errors.address && <div className="error">{errors.address[0]}</div>}
-                {errors.location && <div className="error">{errors.location[0]}</div>}
-                {errors.birthday && <div className="error">{errors.birthday[0]}</div>}
-                {errors.gender && <div className="error">{errors.gender[0]}</div>}
-                {errors.occupation && <div className="error">{errors.occupation[0]}</div>}
-                {errors.what_you_like && <div className="error">{errors.what_you_like[0]}</div>}
-            </div>
             <div className="row gx-3 mb-3">
                 <div className="col-md-6">
                     <label className="label mb-1" htmlFor="inputFirstName">  First name </label>
                     <input className="form-control" id="inputFirstName" type="text" name="first_name" value={inputs.first_name} onChange={handleChange} placeholder="Enter your first name" />
+                    {errors.first_name && <div className="text-danger">{errors.first_name[0]}</div>}
                 </div>
                 <div className="col-md-6">
                     <label className="label mb-1" htmlFor="inputLastName">    Last name</label>
                     <input className="form-control" id="inputLastName" type="text" name="last_name" value={inputs.last_name} onChange={handleChange} placeholder="Enter your last name" />
+                    {errors.last_name && <div className="text-danger">{errors.last_name[0]}</div>}
                 </div>
             </div>
             <div className="row gx-3 mb-3">
                 <div className="col-md-6">
                     <label className="label mb-1" htmlFor="inputPhone">  Phone number    </label>
                     <input className="form-control" id="inputPhone" pattern="[0-9]*" type="tel" maxLength="10" name="mobile_no" value={inputs.mobile_no} onChange={handleChange} placeholder="Enter your phone number" />
+                    {errors.mobile_no && <div className="text-danger">{errors.mobile_no[0]}</div>}
                 </div>
                 <div className="col-md-6">
                     <label className="label mb-1" htmlFor="inputPassword">   Password   </label>
@@ -50,11 +40,14 @@ const ProfileForm = ({ inputs, handleChange, handleSubmit, errors, occupations, 
             <div className="mb-3">
                 <label className="label mb-1" htmlFor="inputEmailAddress">   Email address </label>
                 <input className="form-control" id="inputEmailAddress" type="email" name="email" value={inputs.email} onChange={handleChange} placeholder="Enter your email address" />
+                {errors.email && <div className="text-danger">{errors.email[0]}</div>}
+
             </div>
             <div className="row gx-3 mb-3">
                 <div className="col-md-6">
                     <label className="label mb-1" htmlFor="inputBirthday"> Birthday </label>
                     <input className="form-control" id="inputBirthday" name="birthday" value={inputs.birthday} onChange={handleChange} type="date" />
+                    {errors.birthday && <div className="text-danger">{errors.birthday[0]}</div>}
                 </div>
                 <div className="col-md-6">
                     <label className="label mb-1" htmlFor="demo-select-gender-label" > Gender </label>
@@ -65,6 +58,7 @@ const ProfileForm = ({ inputs, handleChange, handleSubmit, errors, occupations, 
                         <option>Other</option>
                         <option>Not Specified</option>
                     </select>
+                    {errors.gender && <div className="text-danger">{errors.gender[0]}</div>}
                 </div>
             </div>
             <div className="row gx-3 mb-3">
@@ -78,6 +72,7 @@ const ProfileForm = ({ inputs, handleChange, handleSubmit, errors, occupations, 
                             </option>
                         ))}
                     </select>
+                    {errors.occupation && <div className="text-danger">{errors.occupation[0]}</div>}
                 </div>
                 <div className="col-md-6">
                     <label className="label mb-1" htmlFor="demo-select-status-label" >  Status </label>
@@ -85,6 +80,7 @@ const ProfileForm = ({ inputs, handleChange, handleSubmit, errors, occupations, 
                         <option value={1}>Active</option>
                         <option value={0}>Inactive</option>
                     </select>
+                    {errors.status && <div className="text-danger">{errors.status[0]}</div>}
                 </div>
             </div>
             <div className="row gx-3 mb-3">
@@ -97,10 +93,11 @@ const ProfileForm = ({ inputs, handleChange, handleSubmit, errors, occupations, 
                                 {country.name}
                             </option>
                         ))}
+                        {errors.location && <div className="text-danger">{errors.location[0]}</div>}
                     </select>
                 </div>
                 <div className="col-md-6">
-                <label className="label mb-1" htmlFor="inputLocation">What You Like..? </label>
+                    <label className="label mb-1" htmlFor="inputLocation">What You Like..? </label>
                     <FormControl variant="outlined" className="drops" fullWidth>
                         <InputLabel id="inputLike-label">What You like?</InputLabel>
                         <Select
@@ -131,12 +128,14 @@ const ProfileForm = ({ inputs, handleChange, handleSubmit, errors, occupations, 
                             <MenuItem value="Shopping">10. Shopping</MenuItem>
                         </Select>
                     </FormControl>
+                    {errors.what_you_like && <div className="text-danger">{errors.what_you_like[0]}</div>}
                 </div>
             </div>
             <div className="row gx-3 mb-3">
                 <div className="col-md-12">
                     <label className="label mb-1" htmlFor="inputAddress"> Address</label>
                     <textarea className="form-control" id="inputAddress" name="address" value={inputs.address} onChange={handleChange} placeholder="Enter your address" />
+                    {errors.address && <div className="text-danger">{errors.address[0]}</div>}
                 </div>
             </div>
 

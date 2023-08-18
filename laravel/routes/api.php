@@ -12,7 +12,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\ResetPasswordAPIController;
 use App\Http\Controllers\ForgotPasswordAPIController;
-
+use App\Http\Controllers\ChartController;
 
 
 
@@ -48,8 +48,7 @@ Route::get('/getUser', [DashboardController::class, 'getUsersAllData']); //getAl
 Route::get('/getRole', [DashboardController::class, 'getRolesAllData']);
 Route::get('/getOccupation', [DashboardController::class, 'getOccupationAllData']);
 Route::get('/getPermission/{userId}', [DashboardController::class, 'getUserPermissions']);
-
-
 Route::get('password/reset/{token}', [ResetPasswordAPIController::class, 'showResetForm'])->name('password.reset');
 Route::post('password/reset', [ResetPasswordAPIController::class, 'reset']);
 Route::post('password/email', [ForgotPasswordAPIController::class, 'sendResetLinkEmail'])->name('password.email');
+Route::get('/chart/data', [ChartController::class, 'getChartData']);

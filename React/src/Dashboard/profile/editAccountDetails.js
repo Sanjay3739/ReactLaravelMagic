@@ -29,14 +29,6 @@ export default function AccountDetails() {
     what_you_like: [],
   });
 
-  const avatarStyle = {
-    height: "  15rem",
-    width: " 15rem",
-    borderRadius: '50%',
-    boxShadow: ' rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px'
-
-  }
-
   useEffect(() => {
     fetchUser();
     fetchCountries();
@@ -45,8 +37,8 @@ export default function AccountDetails() {
 
   const fetchCountries = async () => {
     try {
-      const response = await fetch("http://localhost:8000/api/country");
-      const data = await response.json();
+      const response = await http.get("/country");
+      const data = response.data;
       setCountries(data);
     } catch (error) {
       console.error("Error fetching countries:", error);
@@ -55,8 +47,8 @@ export default function AccountDetails() {
 
   const fetchOccupations = async () => {
     try {
-      const response = await fetch("http://localhost:8000/api/occupation");
-      const data = await response.json();
+      const response = await http.get("/occupation");
+      const data = response.data;
       setOccupations(data);
     } catch (error) {
       console.error("Error fetching occupation:", error);
@@ -129,43 +121,33 @@ export default function AccountDetails() {
       toast.success("Profile Updated Successfully");
       navigate("/user/index");
     } catch (error) {
-      console.error("Error updating user:", error);
+      if (error.response && error.response.data && error.response.data.errors) {
+        setErrors(error.response.data.errors);
+      } else {
+        console.error(error);
+      }
       toast.error("Profile Not Updated successfully");
     }
   };
 
   return (
     <div className="container-xl px-4 mt-4">
-    
+
       <div className="row">
         <div className="col-xl-4">
           <div className="card mb-4 mb-xl-0">
             <div className="card-header">Profile Picture</div>
             <div className="card-body text-center">
               {inputs.avatar ? (
-                <img
-                  className="img-account-profile"
-                  src={`http://127.0.0.1:8000/storage/${inputs.avatar}`}
-                  alt="Avatar"
-                />
+                <img className="img-account-profile" src={`http://127.0.0.1:8000/storage/${inputs.avatar}`} alt="Avatar" />
               ) : (
-                <img
-                  className="img-account-profile "
-                  src="/noimage.jpg" // Update this path to the correct path of your static image
-                  alt="No Avatar"
-                />
+                <img className="img-account-profile " src="/noimage.jpg" />  // Update this path to the correct path of your static image alt="No Avatar"
               )}
               <div className="small font-italic text-muted mb-4">
                 JPG or PNG no larger than 5 MB
               </div>
               <div className="col-lg-12 head-form">
-                <input
-                  type="file"
-                  name="avatar"
-                  onChange={handleAvatarChange}
-                  placeholder="Avatar"
-                  className="hide_file"
-                />
+                <input type="file" name="avatar" onChange={handleAvatarChange} placeholder="Avatar" className="hide_file" />
               </div>
             </div>
           </div>
@@ -174,14 +156,7 @@ export default function AccountDetails() {
           <div className="card mb-4">
             <div className="card-header">Account Details</div>
             <div className="card-body">
-              <ProfileForm
-                inputs={inputs}
-                handleChange={handleChange}
-                handleSubmit={handleSubmit}
-                errors={errors}
-                occupations={occupations}
-                countries={countries}
-              />
+              <ProfileForm inputs={inputs} handleChange={handleChange} handleSubmit={handleSubmit} errors={errors} occupations={occupations} countries={countries} />
             </div>
           </div>
         </div>

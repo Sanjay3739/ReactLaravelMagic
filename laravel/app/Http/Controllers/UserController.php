@@ -171,7 +171,7 @@ class UserController extends Controller
             'address' => 'nullable|string|max:255',
             'birthday' => 'nullable|date',
             'location' => 'nullable|string|max:255',
-            'gender' => 'nullable|string|in:male,female',
+            'gender' => 'nullable|string|in:Male,Female,Other,Not Specified',
             'occupation' => 'nullable|string|max:255',
             'what_you_like' => 'nullable|string|max:255',
             'password' => 'nullable|string|min:6',

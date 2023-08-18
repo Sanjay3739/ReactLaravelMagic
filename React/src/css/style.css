@@ -724,7 +724,7 @@ input[class="form-inputs"] {
 .menu-wrap nav li a:hover {
     background-color: rgb(5, 18, 197);
     border-radius: 10px;
-    border-color: rgb(5, 197, 53);
+    border-color: rgb(5, 18, 197);
     /* padding: 8px;
     */
     color: #fff !important;
@@ -822,12 +822,29 @@ input[class="form-inputs"] {
     border-radius: 40px
 }
 
+.info-box-chart {
+    background-color: #fff;
+    height: 500px;
+    width: 500px;
+    display: flex;
+    box-shadow: rgba(0, 0, 0, 0.25) 0 .0625em 0.0625em, rgba(0, 0, 0, 0.25) 0 .125em 0.5em, rgba(255, 255, 255, 0.1) 0 0 0 1px inset;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0 3em;
+    border: 1px solid #ede8f0;
+    border-radius: 40px
+}
+
 .info-box:hover {
-    background-color: rgb(0, 255, 0) !important;
-    color: #000;
-    border-color: rgb(0, 255, 0) !important;
+    background-color: rgb(59, 87, 214) !important;
+    color: #fffdfd;
+    border-color: rgb(59, 87, 214) !important;
     fill: #fff !important;
 }
+#box-content:hover{
+    color: #fff;
+}
+
 
 .content-wrap .info-boxes .info-box .box-icon svg {
     display: block;
@@ -1077,4 +1094,13 @@ input[class="form-inputs"] {
 
 .css-13sdxoc-MuiTableCell-root {
     line-height: 3.5rem !important;
+}
+
+
+
+@media only screen and (max-width: 1400px) {
+    .charts {
+        display: flex;
+        flex-direction: column;
+    }
 }

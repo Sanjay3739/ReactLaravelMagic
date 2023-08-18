@@ -1,6 +1,6 @@
 import React from 'react';
 import { PreviousIcon, NextIcon }  from "../../../component/icon"; 
-const Pagination = ({ currentPage, totalPages, onPageChange }) => {
+const UserPagination = ({ currentPage, totalPages, onPageChange }) => {
   const pageNumbers = Array.from({ length: totalPages }, (_, i) => i + 1);
 
   return (
@@ -28,4 +28,4 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
   );
 };
 
-export default Pagination;
+export default UserPagination;

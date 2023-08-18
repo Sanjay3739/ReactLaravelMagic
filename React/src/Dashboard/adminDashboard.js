@@ -2,6 +2,9 @@ import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { ContactPageOutlinedIcon, LogoutOutlinedIcon, PersonAddAltOutlinedIcon, DashboardIcon, UserIcon, RoleIcon, OccupationIcon, BluetoothIcon, CountryIcon, BellIcon, SearchIcon } from "../component/icon"
 import http from '../http';
+import SampleChartComponent from '../component/ChartComponent';
+import DoughnutChartComponent from '../component/DoughnutChartComponent';
+
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -180,25 +183,38 @@ const Dashboard = () => {
           <div className="content">
             {/* Contents */}
             <section className="info-boxes">
-              <div className="info-box ">
-                <div className="box-icon"><UserIcon /></div>
+              <div className="info-box " style={{ background: backgroundColor }} >
+                <div className="box-icon" ><UserIcon /></div>
                 <div className="box-content"><span className="big">{userCount}</span>Total User</div>
               </div>
-              <div className="info-box ">
-                <div className="box-icon"> <RoleIcon /></div>
+              <div className="info-box " style={{ background: backgroundColor }} >
+                <div className="box-icon" > <RoleIcon /></div>
                 <div className="box-content"><span className="big">{roleCount}</span>Total Roles</div>
               </div>
-              <div className="info-box ">
-                <div className="box-icon"><OccupationIcon /></div>
+              <div className="info-box " style={{ background: backgroundColor }} >
+                <div className="box-icon" ><OccupationIcon /></div>
                 <div className="box-content"><span className="big">{occupationCount}</span>Total Occupation</div>
               </div>
-              <div className="info-box">
-                <div className="box-icon"><CountryIcon /></div>
+              <div className="info-box" style={{ background: backgroundColor }} >
+                <div className="box-icon" ><CountryIcon /></div>
                 <div className="box-content"><span className="big">{countryCount}</span>Total Country</div>
               </div>
             </section>
           </div>
+
+          <div className="content">
+            <section className="info-boxes d-flex charts  ">
+              <div className="info-box-chart" style={{ background: backgroundColor }} >
+                <SampleChartComponent />
+              </div>
+
+              <div className="info-box-chart " style={{ background: backgroundColor }} >
+                <DoughnutChartComponent />
+              </div>
+            </section>
+          </div>
         </main>
+
       </div>
     </div>
   );
